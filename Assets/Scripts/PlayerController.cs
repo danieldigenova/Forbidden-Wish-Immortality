@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
             isDead = true;
-            StartCoroutine(Die());
+            StartCoroutine(Die());            
         }
 
     }
@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
 
+        GameController.instance.ShowGameOver();
     }
 
 }
