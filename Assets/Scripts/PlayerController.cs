@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jump_power;
     //public int attack_damage;
 
-    public Text life_text;
+    //public Text life_text;
 
     public bool isJumping;
     public bool isAttacking = false;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>(); 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if(!isDead){
             Move();
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Update life UI
-        life_text.text = "Player Life: " + GameController.instance.PlayerLife;
+        //life_text.text = "Player Life: " + GameController.instance.PlayerLife;
     }
 
     private void Move()

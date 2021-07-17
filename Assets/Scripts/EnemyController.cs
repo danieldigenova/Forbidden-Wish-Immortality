@@ -12,16 +12,16 @@ public enum EnemyState
 
 public class EnemyController : MonoBehaviour
 {
-    private int life = 100;
+    //private int life = 100;
 
-    public Text life_text;
+    //public Text life_text;
 
     public Animator animator;
     public GameObject player;
     public float mov_speed;
     public float vision_range;
     public float attack_range;
-    public int attack_damage;
+    //public int attack_damage;
     public float cooldownAttack;
     private float timer_attack = 0;
 
@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         // Update life UI
-        life_text.text = "Enemy Life: " + life;
+        //life_text.text = "Enemy Life: " + life;
 
         if (player == null)
         {
@@ -75,13 +75,13 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        life = Mathf.Clamp(life - damage, 0, 100);
-        if (life > 0)
+        GameController.instance.EnemyLife = Mathf.Clamp(GameController.instance.EnemyLife - damage, 0, 100);
+        if (GameController.instance.EnemyLife > 0)
         {
             animator.SetTrigger("TakeDamage");
         }       
 
-        else if (life <= damage && currState != EnemyState.Die)
+        else if (GameController.instance.EnemyLife <= damage && currState != EnemyState.Die)
         {
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
@@ -159,7 +159,7 @@ public class EnemyController : MonoBehaviour
 
             foreach (Collider2D play in hitPlayers)
             {
-                play.GetComponent<PlayerController>().TakeDamage(attack_damage);
+                play.GetComponent<PlayerController>().TakeDamage(GameController.instance.EnemyAttack);
             }
         }
     }
