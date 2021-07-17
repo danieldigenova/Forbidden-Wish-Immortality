@@ -38,11 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\Demo\Sensor_HeroKnight.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
      <Compile Include="Assets\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
-     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\OrbController.cs" />
+     <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
+     <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
      <None Include="Assets\Hero Knight - Pixel Art\ColorSwap\Sprites-ColorSwap.shader" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private int life = 100;
+    //private int life = 100;
     public float mov_speed;
     public float attack_speed;
     public float jump_power;
-    public int attack_damage;
+    //public int attack_damage;
 
     public Text life_text;
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Update life UI
-        life_text.text = "Player Life: " + life;
+        life_text.text = "Player Life: " + GameController.instance.PlayerLife;
     }
 
     private void Move()
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
                 foreach(Collider2D enemy in hitEnemies)
                 {
-                    enemy.GetComponent<EnemyController>().TakeDamage(attack_damage);
+                    enemy.GetComponent<EnemyController>().TakeDamage(GameController.instance.PlayerAttack);
                 }
             }
         }
@@ -133,13 +133,13 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        life = Mathf.Clamp(life - damage, 0, 100);
-        if (life > 0)
+        GameController.instance.PlayerLife = Mathf.Clamp(GameController.instance.PlayerLife - damage, 0, 100);
+        if (GameController.instance.PlayerLife > 0)
         {
             animator.SetTrigger("TakeDamage");
         }
 
-        else if (life <= damage && !isDead)
+        else if (GameController.instance.PlayerLife <= damage && !isDead)
         {
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");

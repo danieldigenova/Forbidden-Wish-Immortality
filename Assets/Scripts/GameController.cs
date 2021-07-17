@@ -9,9 +9,24 @@ public class GameController : MonoBehaviour
 
     public GameObject gameOver;
     public static GameController instance;
+
+
+    public int PlayerTotalLife;
+    public int PlayerTotalShield;
+    public int PlayerTotalAttack;
+    public int PlayerTotalExperience;
+
+    public int PlayerLife;
+    public int PlayerShield;
+    public int PlayerAttack;
+    public int PlayerExperience;
+
     void Start()
     {
         instance = this;
+        this.PlayerLife = this.PlayerTotalLife;
+        this.PlayerShield = this.PlayerTotalShield;
+        this.PlayerAttack = this.PlayerTotalAttack;
     }
 
     // Update is called once per frame
@@ -27,7 +42,7 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
-        
+        SceneManager.LoadScene("MenuInicial");
     }
 
     public void StartGame()

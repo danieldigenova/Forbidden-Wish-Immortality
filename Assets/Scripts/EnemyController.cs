@@ -31,6 +31,9 @@ public class EnemyController : MonoBehaviour
 
     public EnemyState currState = EnemyState.Idle;
 
+    public GameObject orbGreenPrefab;
+    public GameObject orbBluePrefab;
+
     void Start()
     {
 
@@ -91,7 +94,20 @@ public class EnemyController : MonoBehaviour
     {
         //animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2);
+
+        orbGreenPrefab.SetActive(true);
+        GameObject orbGreen = Instantiate<GameObject>(orbGreenPrefab);
+        orbGreen.transform.position = new Vector3(gameObject.transform.position.x + 0.2f, gameObject.transform.position.y - 0.45f, 0); //gameObject.transform.position;
+
+        orbBluePrefab.SetActive(true);
+        GameObject orbBlue = Instantiate<GameObject>(orbBluePrefab);
+        orbBlue.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, gameObject.transform.position.y - 0.45f, 0); //gameObject.transform.position;
+      
+
         Destroy(gameObject);
+
+        
+
         yield return null;
         
     }
