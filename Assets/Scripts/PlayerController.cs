@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>(); 
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(!isDead){
             Move();
