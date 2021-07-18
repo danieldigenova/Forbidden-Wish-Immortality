@@ -21,20 +21,12 @@ public class GameController : MonoBehaviour
     public int PlayerAttack;
     public int PlayerExperience;
 
-    public int EnemyTotalLife;
-    public int EnemyTotalAttack;
-
-    public int EnemyAttack;
-    public int EnemyLife;
-
     void Start()
     {
         instance = this;
         this.PlayerLife = this.PlayerTotalLife;
         this.PlayerShield = this.PlayerTotalShield;
         this.PlayerAttack = this.PlayerTotalAttack;
-        this.EnemyLife = this.EnemyTotalLife;
-        this.EnemyAttack = this.EnemyTotalAttack;
     }
 
     // Update is called once per frame

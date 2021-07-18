@@ -21,9 +21,14 @@ public class EnemyController : MonoBehaviour
     public float mov_speed;
     public float vision_range;
     public float attack_range;
-    //public int attack_damage;
     public float cooldownAttack;
     private float timer_attack = 0;
+
+    public int EnemyTotalLife;
+    public int EnemyTotalAttack;
+
+    public int EnemyAttack;
+    public int enemyLife;
 
     public Transform swordRange;
 
@@ -33,10 +38,15 @@ public class EnemyController : MonoBehaviour
 
     public GameObject orbGreenPrefab;
     public GameObject orbBluePrefab;
+    public Slider healthbar;
+    public Gradient healthBarCollor;
+    public Image healthBarFill;
 
     void Start()
     {
-
+        this.enemyLife = this.EnemyTotalLife;
+        this.EnemyAttack = this.EnemyTotalAttack;
+        setMaxHealth(EnemyTotalLife);
     }
 
     void Update()
@@ -75,13 +85,14 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        GameController.instance.EnemyLife = Mathf.Clamp(GameController.instance.EnemyLife - damage, 0, 100);
-        if (GameController.instance.EnemyLife > 0)
+        enemyLife = Mathf.Clamp(enemyLife - damage, 0, 100);
+        setHealth(enemyLife);
+        if (enemyLife > 0)
         {
             animator.SetTrigger("TakeDamage");
         }       
 
-        else if (GameController.instance.EnemyLife <= damage && currState != EnemyState.Die)
+        else if (enemyLife <= damage && currState != EnemyState.Die)
         {
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
@@ -102,12 +113,9 @@ public class EnemyController : MonoBehaviour
         orbBluePrefab.SetActive(true);
         GameObject orbBlue = Instantiate<GameObject>(orbBluePrefab);
         orbBlue.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, gameObject.transform.position.y - 0.45f, 0); //gameObject.transform.position;
-      
 
         Destroy(gameObject);
-
         
-
         yield return null;
         
     }
@@ -159,7 +167,7 @@ public class EnemyController : MonoBehaviour
 
             foreach (Collider2D play in hitPlayers)
             {
-                play.GetComponent<PlayerController>().TakeDamage(GameController.instance.EnemyAttack);
+                play.GetComponent<PlayerController>().TakeDamage(EnemyAttack);
             }
         }
     }
@@ -170,5 +178,20 @@ public class EnemyController : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(swordRange.position, attack_range);
+    }
+
+    void setMaxHealth(float maxHealth)
+    {
+        healthbar.maxValue = maxHealth;
+        healthbar.value = maxHealth;
+
+        healthBarFill.color = healthBarCollor.Evaluate(1f);
+    }
+
+    void setHealth(float health)
+    {
+        healthbar.value = health;
+
+        healthBarFill.color = healthBarCollor.Evaluate(healthbar.normalizedValue);
     }
 }
