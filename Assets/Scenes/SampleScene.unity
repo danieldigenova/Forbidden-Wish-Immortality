@@ -153,7 +153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 769821750}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.9, y: 1}
@@ -316,7 +316,7 @@ RectTransform:
   - {fileID: 1463013669}
   - {fileID: 1937096954}
   m_Father: {fileID: 769821750}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -755,8 +755,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1593907998}
-  - {fileID: 400847354}
   - {fileID: 261534275}
+  - {fileID: 400847354}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1593,7 +1593,11 @@ MonoBehaviour:
   player: {fileID: 1587681315}
   rightWall: {fileID: 0}
   leftWall: {fileID: 0}
-  Enemy: {fileID: 3678028806067099319, guid: 4bb2447bbbe9ab5419ce491287bad433, type: 3}
+  Enemies:
+  - {fileID: 3382620647778496817, guid: c16a04a8fe7afb240974e8dfc7192aad, type: 3}
+  - {fileID: 9024803204485525749, guid: 246b5f9a94779784a9ae295315e39d3b, type: 3}
+  - {fileID: 2927633989243201020, guid: 352bc28d34efecb4eb124526130f6a2a, type: 3}
+  - {fileID: 7461153281074017234, guid: c04cb2827a6326e40a55bea4108c060e, type: 3}
   levelShow: {fileID: 261534276}
 --- !u!1 &1460462661
 GameObject:

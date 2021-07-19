@@ -44,6 +44,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         this.enemyLife = this.EnemyTotalLife;
         this.EnemyAttack = this.EnemyTotalAttack;
         setMaxHealth(EnemyTotalLife);
@@ -159,6 +161,16 @@ public class EnemyController : MonoBehaviour
 
         if (cooldownAttack < timer_attack)
         {
+
+            if (transform.position.x >= player.transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+            }
+
             animator.SetTrigger("Attack");
 
             timer_attack = 0.0f;

@@ -8,7 +8,7 @@ public class LevelController : MonoBehaviour
     public GameObject player;
     public GameObject rightWall;
     public GameObject leftWall;
-    public GameObject Enemy;
+    public GameObject[] Enemies;
     private GameObject enemyInstance;
     public Text levelShow;
 
@@ -17,7 +17,8 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         level = 1;
-        enemyInstance=Instantiate(Enemy);
+        int i = Random.Range(0, 4);
+        enemyInstance =Instantiate(Enemies[i]);
     }
 
     // Update is called once per frame
@@ -28,7 +29,8 @@ public class LevelController : MonoBehaviour
             if (player.GetComponent<Transform>().position.x>3)
             {
                 nextLevel();
-                enemyInstance=Instantiate(Enemy);
+                int i = Random.Range(0, 4);
+                enemyInstance = Instantiate(Enemies[i]);
             }
         }
     }
