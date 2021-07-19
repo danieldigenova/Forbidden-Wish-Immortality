@@ -1,0 +1,577 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.9f1 (108be757e447) revision 1084391'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19041.1110; Version 2004; 64bit' Language: 'pt' Physical Memory: 6078 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+D:\Program Files\Unity\Hub\Editor\2020.3.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+D:/Unity/Projetos/Forbidden-Wish-Immortality
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+56333
+Successfully changed project path to: D:/Unity/Projetos/Forbidden-Wish-Immortality
+D:/Unity/Projetos/Forbidden-Wish-Immortality
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 77.73 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.9f1 (108be757e447)
+[Subsystems] Discovering subsystems at path D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity/Projetos/Forbidden-Wish-Immortality/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon(TM) Vega 8 Graphics (ID=0x15dd)
+    Vendor:   
+    VRAM:     3039 MB
+    Driver:   27.20.1020.1
+Initialize mono
+Mono path[0] = 'D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56836
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2020.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002096 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 66.33 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.709 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001333 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 56.88 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.183 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.23 seconds
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1824 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.8 MB.
+System memory in use after: 85.7 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2269.
+Total: 2.392200 ms (FindLiveObjects: 0.222600 ms CreateObjectMapping: 0.053500 ms MarkObjects: 1.896700 ms  DeleteObjects: 0.217900 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites
+  artifactKey: Guid(009da8e9142cfa040adae9c25e89cf84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites using Guid(009da8e9142cfa040adae9c25e89cf84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '893afbcf1efc4aab7f11db34d5ee2dc0') in 0.026329 seconds
+  Import took 0.105518 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000476 seconds.
+  path: Assets/Prefabs/Mushroom.prefab
+  artifactKey: Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Mushroom.prefab using Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb92370e79ce4b59abceb2194e8ba298') in 0.465218 seconds
+  Import took 0.501134 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.878514 seconds.
+  path: Assets/Sprites/Health-Bar
+  artifactKey: Guid(df40e7249b23a15439c0e883dc0710e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Health-Bar using Guid(df40e7249b23a15439c0e883dc0710e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1b4f7743c9cd103626e60229e12cc96') in 0.002971 seconds
+  Import took 0.030276 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.109172 seconds.
+  path: Assets/Sprites/Health-Bar-Complete.png
+  artifactKey: Guid(5cd9acc87bf51f24c973a73f2452752f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Health-Bar-Complete.png using Guid(5cd9acc87bf51f24c973a73f2452752f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7480b5c8762f1e3ee0447569dc892b24') in 0.245808 seconds
+  Import took 0.282242 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.053093 seconds.
+  path: Assets/Sprites/Health-Bar-Empty.png
+  artifactKey: Guid(8a2ddad0f92c8404498be2e3246cf180) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Health-Bar-Empty.png using Guid(8a2ddad0f92c8404498be2e3246cf180) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e70fb9ef9846e66c868a6d24c5eeb58') in 0.017985 seconds
+  Import took 0.041829 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.266923 seconds.
+  path: Assets/Sprites/New Folder
+  artifactKey: Guid(c5e2ddf60d53194459a9c066bcd5ef35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/New Folder using Guid(c5e2ddf60d53194459a9c066bcd5ef35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '240226dc4fe724c7dafa567e33412ae1') in 0.004313 seconds
+  Import took 0.030921 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.275597 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites
+  artifactKey: Guid(4996574f823d4d4428b84c837beed802) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites using Guid(4996574f823d4d4428b84c837beed802) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ade67c6456f41367a6d0d389f4de95b') in 0.002950 seconds
+  Import took 0.035704 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.497650 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Flying eye
+  artifactKey: Guid(751e441fc6a343b49ae728f032e9a418) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Flying eye using Guid(751e441fc6a343b49ae728f032e9a418) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6941ab5273aceddea721c41871b5664b') in 0.003162 seconds
+  Import took 0.036591 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.564843 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Flying eye/Flight.png
+  artifactKey: Guid(6d7cd4f7505dc674c891ca8946cfd98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Flying eye/Flight.png using Guid(6d7cd4f7505dc674c891ca8946cfd98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a66b4a04eecacf84e35335ce5b7f93d6') in 0.042130 seconds
+  Import took 0.075279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.366115 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Flying eye/Flight.png
+  artifactKey: Guid(6d7cd4f7505dc674c891ca8946cfd98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Flying eye/Flight.png using Guid(6d7cd4f7505dc674c891ca8946cfd98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f74767d8bebf9e7405ad199236f081f') in 0.069076 seconds
+  Import took 0.087022 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.211392 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Goblin
+  artifactKey: Guid(bf258c1ee77364e4b8527f51bae39f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Goblin using Guid(bf258c1ee77364e4b8527f51bae39f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1313eb81beaa57195cb00b1425992416') in 0.003588 seconds
+  Import took 0.038885 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.615638 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png
+  artifactKey: Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png using Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94cedd464da538ed0a5f597d1ff10f15') in 0.032762 seconds
+  Import took 0.063231 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003728 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png
+  artifactKey: Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png using Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94cedd464da538ed0a5f597d1ff10f15') in 0.037104 seconds
+  Import took 0.072669 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.393321 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png
+  artifactKey: Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Goblin/Idle.png using Guid(c1cdd26cc09ad224884556bc4d8296ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c378048ea6ce5e7724422f824291442a') in 0.027494 seconds
+  Import took 0.293428 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.328134 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Mushroom/Idle.png
+  artifactKey: Guid(f8b30c2afe165d645b54d500a9c30862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Mushroom/Idle.png using Guid(f8b30c2afe165d645b54d500a9c30862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5c6a5f778f9a89ec560d901f711eae4') in 0.045482 seconds
+  Import took 0.084824 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 118.029077 seconds.
+  path: Assets/Animations/eye_attack.anim
+  artifactKey: Guid(163e184749acc9443bf1a77508088992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/eye_attack.anim using Guid(163e184749acc9443bf1a77508088992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa55adc848a22f163973f2e844eabdc6') in 0.005122 seconds
+  Import took 0.070819 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.085203 seconds.
+  path: Assets/Animations/eye_attack.anim
+  artifactKey: Guid(163e184749acc9443bf1a77508088992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/eye_attack.anim using Guid(163e184749acc9443bf1a77508088992) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa55adc848a22f163973f2e844eabdc6') in 0.003665 seconds
+  Import took 0.007970 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.234210 seconds.
+  path: Assets/Animations/Enemy.controller
+  artifactKey: Guid(f8c36d0536f1a944a895529270569fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Enemy.controller using Guid(f8c36d0536f1a944a895529270569fbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db9f7c9b3a09a9c79ac9e27d56610946') in 0.035571 seconds
+  Import took 0.060550 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.235244 seconds.
+  path: Assets/Prefabs/Enemy.prefab
+  artifactKey: Guid(4bb2447bbbe9ab5419ce491287bad433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Enemy.prefab using Guid(4bb2447bbbe9ab5419ce491287bad433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a95c899d8cb797155379898ad154697d') in 0.140809 seconds
+  Import took 0.166868 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.189067 seconds.
+  path: Assets/Prefabs/Flying eye.prefab
+  artifactKey: Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Flying eye.prefab using Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b9ce90fdb950ee065d7936dff4c7b6c') in 0.020495 seconds
+  Import took 0.025077 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.190734 seconds.
+  path: Assets/Prefabs/Goblin.prefab
+  artifactKey: Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Goblin.prefab using Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e76581703556e0b0d74f9f4c31f26b52') in 0.023061 seconds
+  Import took 0.060843 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002887 seconds.
+  path: Assets/Prefabs/Goblin.prefab
+  artifactKey: Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Goblin.prefab using Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e76581703556e0b0d74f9f4c31f26b52') in 0.025861 seconds
+  Import took 0.032213 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.128087 seconds.
+  path: Assets/Prefabs/Orb Variant.prefab
+  artifactKey: Guid(8ced117ffbd72f740bce51e32554fe51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Orb Variant.prefab using Guid(8ced117ffbd72f740bce51e32554fe51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4df6a1a1d4f43cee55b5c7bfbadb1227') in 0.009241 seconds
+  Import took 0.040919 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.658015 seconds.
+  path: Assets/Prefabs/Player.prefab
+  artifactKey: Guid(fbef634fffb3469469fdc81d8dc5a004) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player.prefab using Guid(fbef634fffb3469469fdc81d8dc5a004) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06e85ac992d507f3eaf19c9b9c96bed5') in 0.176909 seconds
+  Import took 0.199898 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.498791 seconds.
+  path: Assets/Prefabs/Skeleton.prefab
+  artifactKey: Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Skeleton.prefab using Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fe519bc035336b3a1dfc913e1caffd2') in 0.024211 seconds
+  Import took 0.051415 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000894 seconds.
+  path: Assets/Prefabs/Skeleton.prefab
+  artifactKey: Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Skeleton.prefab using Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fe519bc035336b3a1dfc913e1caffd2') in 0.036064 seconds
+  Import took 0.048817 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.116761 seconds.
+  path: Assets/Animations/Flying eye.controller
+  artifactKey: Guid(9b8b2fcf4ce5f364f9b52b73b94f0a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Flying eye.controller using Guid(9b8b2fcf4ce5f364f9b52b73b94f0a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '703640d2c26a550b0b5c7ceea09e42b1') in 0.017342 seconds
+  Import took 0.033940 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.926109 seconds.
+  path: Assets/Animations/Goblin.controller
+  artifactKey: Guid(e98b33822bf7db847896a5450a343bee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Goblin.controller using Guid(e98b33822bf7db847896a5450a343bee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42ec8aaafbee045a753d31a620a34f70') in 0.003901 seconds
+  Import took 0.037095 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.443485 seconds.
+  path: Assets/Animations/Mushroom.controller
+  artifactKey: Guid(156e67e38582a1b47883e5a2466db9c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Mushroom.controller using Guid(156e67e38582a1b47883e5a2466db9c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f84bea4067a42f66559ab89b345333df') in 0.006126 seconds
+  Import took 0.039545 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 71.893952 seconds.
+  path: Assets/Monsters Creatures Fantasy/Sprites/Skeleton
+  artifactKey: Guid(fd6e1b5c7ba099a4794022de3b75a7c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Sprites/Skeleton using Guid(fd6e1b5c7ba099a4794022de3b75a7c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b671bbd00fdf95ab62c309a7f6d0ee86') in 0.004272 seconds
+  Import took 0.027779 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.150491 seconds.
+  path: Assets/Monsters Creatures Fantasy/Animations/Skeleton/Idle_0.controller
+  artifactKey: Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Animations/Skeleton/Idle_0.controller using Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '780a6089c099c940a9f48b33d106f88f') in 0.007055 seconds
+  Import took 0.040311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.657511 seconds.
+  path: Assets/Monsters Creatures Fantasy/Animations/Skeleton/Skeleton.controller
+  artifactKey: Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Monsters Creatures Fantasy/Animations/Skeleton/Skeleton.controller using Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ac11f47986513080d07b538d72bffb2') in 0.008056 seconds
+  Import took 0.030172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 102.663847 seconds.
+  path: Assets/Animations/Goblin.controller
+  artifactKey: Guid(e98b33822bf7db847896a5450a343bee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Goblin.controller using Guid(e98b33822bf7db847896a5450a343bee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a6c90ff0e23002ad883734b3c1d1a10') in 0.012045 seconds
+  Import took 0.034121 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 73.525649 seconds.
+  path: Assets/Animations/Mushroom.controller
+  artifactKey: Guid(156e67e38582a1b47883e5a2466db9c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Mushroom.controller using Guid(156e67e38582a1b47883e5a2466db9c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85d0b032c7a6b2c70537d4cdcf859ac6') in 0.007117 seconds
+  Import took 0.016320 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.372097 seconds.
+  path: Assets/Animations/Skeleton.controller
+  artifactKey: Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Skeleton.controller using Guid(7052c8b4bb06f644ea75e62b72afedbd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cd1e0be490537f6d66de3cddf0e4c12') in 0.018448 seconds
+  Import took 0.032513 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 94.735289 seconds.
+  path: Assets/Scripts/GameController.cs
+  artifactKey: Guid(f22b352c417913e489c2d7354ea82c20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameController.cs using Guid(f22b352c417913e489c2d7354ea82c20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '054bbff6189bb3844abe4c3c22c0ff82') in 0.060508 seconds
+  Import took 0.064185 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.273455 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.56 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in 10.128 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1817 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.0 MB.
+System memory in use after: 89.0 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2288.
+Total: 28.676800 ms (FindLiveObjects: 0.250900 ms CreateObjectMapping: 0.061000 ms MarkObjects: 27.863700 ms  DeleteObjects: 0.498400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001138 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.365 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.48 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1817 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.1 MB.
+System memory in use after: 89.0 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2292.
+Total: 2.491600 ms (FindLiveObjects: 0.220600 ms CreateObjectMapping: 0.053700 ms MarkObjects: 2.076000 ms  DeleteObjects: 0.139800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 208.269756 seconds.
+  path: Assets/Scripts/GameController.cs
+  artifactKey: Guid(f22b352c417913e489c2d7354ea82c20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameController.cs using Guid(f22b352c417913e489c2d7354ea82c20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '588767636d82acae6cf62bebc55c7e8b') in 0.005149 seconds
+  Import took 0.008788 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001120 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.396 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1817 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.1 MB.
+System memory in use after: 89.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2296.
+Total: 3.025700 ms (FindLiveObjects: 0.347700 ms CreateObjectMapping: 0.066500 ms MarkObjects: 2.457900 ms  DeleteObjects: 0.152000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001479 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.992 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1817 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.1 MB.
+System memory in use after: 89.1 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2300.
+Total: 3.236900 ms (FindLiveObjects: 0.400300 ms CreateObjectMapping: 0.058600 ms MarkObjects: 2.386100 ms  DeleteObjects: 0.390100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 192.042542 seconds.
+  path: Assets/Prefabs/Goblin.prefab
+  artifactKey: Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Goblin.prefab using Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9dc170036171576c16dda6487190297') in 0.323944 seconds
+  Import took 0.329086 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.526470 seconds.
+  path: Assets/Prefabs/Flying eye.prefab
+  artifactKey: Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Flying eye.prefab using Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bf07e123d662880b14035d109906bfe') in 0.082642 seconds
+  Import took 0.087753 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.910386 seconds.
+  path: Assets/Prefabs/Flying eye.prefab
+  artifactKey: Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Flying eye.prefab using Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '096ecefb4359958083a077d0668bc279') in 0.034830 seconds
+  Import took 0.039464 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.361664 seconds.
+  path: Assets/Prefabs/Mushroom.prefab
+  artifactKey: Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Mushroom.prefab using Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0a3a178f6bc80007cc389f505d3bfe0') in 0.129127 seconds
+  Import took 0.133994 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.472804 seconds.
+  path: Assets/Prefabs/Mushroom.prefab
+  artifactKey: Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Mushroom.prefab using Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0aeab0695deb96eb3ac45043668a29ad') in 0.044687 seconds
+  Import took 0.049461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.006586 seconds.
+  path: Assets/Prefabs/Skeleton.prefab
+  artifactKey: Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Skeleton.prefab using Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03f980113d44951d09c69ce38255735c') in 0.154218 seconds
+  Import took 0.161035 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.813810 seconds.
+  path: Assets/Prefabs/Flying eye.prefab
+  artifactKey: Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Flying eye.prefab using Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '406e99607b11319c84eb0ea84012c721') in 0.024672 seconds
+  Import took 0.029507 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.009142 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.419 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1817 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 89.2 MB.
+System memory in use after: 89.2 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2305.
+Total: 4.506700 ms (FindLiveObjects: 1.455100 ms CreateObjectMapping: 0.386500 ms MarkObjects: 2.468100 ms  DeleteObjects: 0.194300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 165.540750 seconds.
+  path: Assets/Prefabs/Mushroom.prefab
+  artifactKey: Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Mushroom.prefab using Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3a62d2dea9cd0b046e17e8fcaf63c1f') in 0.136324 seconds
+  Import took 0.141178 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.219033 seconds.
+  path: Assets/Prefabs/Skeleton.prefab
+  artifactKey: Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Skeleton.prefab using Guid(861f17e73e4e4d64094945ca6c8f9c0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02c8367bf7142906383da95a52b7a972') in 0.027336 seconds
+  Import took 0.032283 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.396076 seconds.
+  path: Assets/Prefabs/Goblin.prefab
+  artifactKey: Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Goblin.prefab using Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8476779125faea17158a19d31efa3cfe') in 0.025962 seconds
+  Import took 0.030879 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.028534 seconds.
+  path: Assets/Prefabs/Flying eye.prefab
+  artifactKey: Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Flying eye.prefab using Guid(3e5f7b78f9a86ec41a210b1267bb8475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a57d032461d6f12feaaf6897baea1678') in 0.026687 seconds
+  Import took 0.031754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.704445 seconds.
+  path: Assets/Prefabs/Goblin.prefab
+  artifactKey: Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Goblin.prefab using Guid(88bc96653ab3d3944b843984ed9bbeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3c269ce66f155f00c7daa33fa3b39ca') in 0.024356 seconds
+  Import took 0.029476 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.537651 seconds.
+  path: Assets/Prefabs/Mushroom.prefab
+  artifactKey: Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Mushroom.prefab using Guid(239e9a1e8ba597248af58b3e7fcb35db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a74fee145b4451847f3418d89c9cbc1') in 0.025707 seconds
+  Import took 0.030160 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -1503,7 +1503,11 @@ MonoBehaviour:
   gameOver: {fileID: 400847353}
   StatsMenu: {fileID: 0}
   player: {fileID: 1587681315}
-  Enemy: {fileID: 3678028806067099319, guid: 4bb2447bbbe9ab5419ce491287bad433, type: 3}
+  Enemies:
+  - {fileID: 3382620647778496817, guid: 861f17e73e4e4d64094945ca6c8f9c0b, type: 3}
+  - {fileID: 2927633989243201020, guid: 239e9a1e8ba597248af58b3e7fcb35db, type: 3}
+  - {fileID: 9024803204485525749, guid: 88bc96653ab3d3944b843984ed9bbeb6, type: 3}
+  - {fileID: 7461153281074017234, guid: 3e5f7b78f9a86ec41a210b1267bb8475, type: 3}
   levelShow: {fileID: 261534276}
   level: 0
 --- !u!4 &736976625

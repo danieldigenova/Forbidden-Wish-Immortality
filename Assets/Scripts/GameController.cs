@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     public GameObject StatsMenu;
     
     public GameObject player;
-    public GameObject Enemy;
+    public GameObject[] Enemies;
     private GameObject enemyInstance;
     public Text levelShow;
 
@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour
     {
         instance = this;
         level = 1;
-        enemyInstance = Instantiate(Enemy);
+        int i = Random.Range(0, 4);
+        enemyInstance = Instantiate(Enemies[i]);
     }
 
     // Update is called once per frame
@@ -35,7 +36,8 @@ public class GameController : MonoBehaviour
             {
                 SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
                 nextLevel();
-                enemyInstance = Instantiate(Enemy);
+                int i = Random.Range(0, 4);
+                enemyInstance = Instantiate(Enemies[i]);
             }
         }
         if (Input.GetKey(KeyCode.Escape))
