@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -9,30 +10,53 @@ public class GameController : MonoBehaviour
 
     public GameObject gameOver;
     public static GameController instance;
+    public GameObject StatsMenu;
+    
+    public GameObject player;
+    public GameObject Enemy;
+    private GameObject enemyInstance;
+    public Text levelShow;
 
-
-    public int PlayerTotalLife;
-    public int PlayerTotalShield;
-    public int PlayerTotalAttack;
-    public int PlayerTotalExperience;
-
-    public int PlayerLife;
-    public int PlayerShield;
-    public int PlayerAttack;
-    public int PlayerExperience;
+    public int level;
 
     void Start()
     {
         instance = this;
-        this.PlayerLife = this.PlayerTotalLife;
-        this.PlayerShield = this.PlayerTotalShield;
-        this.PlayerAttack = this.PlayerTotalAttack;
+        level = 1;
+        enemyInstance = Instantiate(Enemy);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (enemyInstance == null)
+        {
+            if (player.GetComponent<Transform>().position.x > 3)
+            {
+                SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
+                nextLevel();
+                enemyInstance = Instantiate(Enemy);
+            }
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+
+        }
+    }
+
+    void nextLevel()
+    {
+        level += 1;
+        levelShow.text = "Fase " + level;
+        RestartPosition();
+        new WaitForSecondsRealtime(0.5f);
+    }
+
+    void RestartPosition()
+    {
+        Vector2 position = player.GetComponent<Transform>().position;
+        position.x = -2.2f;
+        player.GetComponent<Transform>().position = position;
     }
 
     public void ShowGameOver()

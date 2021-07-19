@@ -5,14 +5,26 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    //private int life = 100;
+    //Status Points (Persistent)
+    public int statusPointsLife;
+    public int statusPointsShield;
+    public int statusPointsAttack;
+    public int pointsToSpend;
+    //Experience Points (Persistent)
+    public float playerTotalExperience;
+    public int level;
+    public int playerExperience;
+
+    //Damage system variables
+    public float playerLife;
+    public float playerShield;
+    public float playerAttack;
+
     public float mov_speed;
     public float attack_speed;
     public float jump_power;
-    //public int attack_damage;
 
-    //public Text life_text;
-
+    //state variables
     public bool isJumping;
     public bool isAttacking = false;
 
@@ -25,10 +37,34 @@ public class PlayerController : MonoBehaviour
     public float attackRange;
     public LayerMask enemies;
 
+    public Text LevelText;
+
     private bool isDead = false;
 
     void Start()
     {
+
+        PlayerData data = SaveSystem.LoadPlayer();
+        if (data != null)
+        {
+            level = data.level;
+            statusPointsLife = data.statusPointsLife;
+            statusPointsAttack = data.statusPointsAttack;
+            statusPointsShield = data.statusPointsShield;
+            pointsToSpend = data.pointsToSpend;
+        }
+        else
+        {
+            level = 1;
+            statusPointsLife = 0;
+            statusPointsAttack = 0;
+            statusPointsShield =0;
+            pointsToSpend = 0;
+        }
+        updateStatus();
+        updateLevelText();
+        playerExperience = 0;
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>(); 
     }
@@ -40,9 +76,41 @@ public class PlayerController : MonoBehaviour
             Jump();
             Attack();
         }
+        if (playerExperience>=20)
+        {
+            levelUp();
+            pointsToSpend += 5;
+            playerExperience = 0;
+        }
 
         // Update life UI
         //life_text.text = "Player Life: " + GameController.instance.PlayerLife;
+    }
+
+    void levelUp()
+    {
+        level += 1;
+        updateStatus();
+        updateLevelText();
+    }
+
+    void updateStatus()
+    {
+        playerLife = 100 + (0.1f* statusPointsLife);
+        playerAttack = 15 + (0.1f * statusPointsAttack);
+        playerShield = 110 + (0.1f * statusPointsShield);
+    }
+    public void updateStatusPoints(int attack, int defense, int life, int pointsToSpend)
+    {
+        statusPointsLife = life;
+        statusPointsAttack= attack;
+        statusPointsShield = defense;
+        this.pointsToSpend = pointsToSpend;
+    }
+
+    void updateLevelText()
+    {
+        LevelText.text = "Lvl. " + level;
     }
 
     private void Move()
@@ -116,7 +184,7 @@ public class PlayerController : MonoBehaviour
 
                 foreach(Collider2D enemy in hitEnemies)
                 {
-                    enemy.GetComponent<EnemyController>().TakeDamage(GameController.instance.PlayerAttack);
+                    enemy.GetComponent<EnemyController>().TakeDamage(playerAttack);
                 }
             }
         }
@@ -131,15 +199,18 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        GameController.instance.PlayerLife = Mathf.Clamp(GameController.instance.PlayerLife - damage, 0, 100);
-        if (GameController.instance.PlayerLife > 0)
+        playerLife -= damage;
+        if (playerLife < 0)
+            playerLife = 0;
+
+        if (playerLife > 0)
         {
             animator.SetTrigger("TakeDamage");
         }
 
-        else if (GameController.instance.PlayerLife <= damage && !isDead)
+        else if (playerLife <= damage && !isDead)
         {
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
@@ -153,7 +224,6 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("Dead", true);
         yield return new WaitForSeconds(2);
-        Destroy(gameObject);
 
         GameController.instance.ShowGameOver();
     }

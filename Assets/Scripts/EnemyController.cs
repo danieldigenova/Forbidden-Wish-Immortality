@@ -12,23 +12,21 @@ public enum EnemyState
 
 public class EnemyController : MonoBehaviour
 {
-    //private int life = 100;
+    //Base Stats
 
-    //public Text life_text;
+    public int enemyLevel;
+    public Text levelText;
 
     public Animator animator;
-    public GameObject player;
+    public GameObject[] player;
     public float mov_speed;
     public float vision_range;
     public float attack_range;
     public float cooldownAttack;
     private float timer_attack = 0;
 
-    public int EnemyTotalLife;
-    public int EnemyTotalAttack;
-
-    public int EnemyAttack;
-    public int enemyLife;
+    public float EnemyAttack;
+    public float enemyLife;
 
     public Transform swordRange;
 
@@ -44,9 +42,14 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        this.enemyLife = this.EnemyTotalLife;
-        this.EnemyAttack = this.EnemyTotalAttack;
-        setMaxHealth(EnemyTotalLife);
+        enemyLevel = GameController.instance.level;
+        levelText.text = "lvl. " + enemyLevel;
+
+        this.enemyLife = (100+ 0.5f*enemyLevel);
+        this.EnemyAttack = 10 + enemyLevel;
+        setMaxHealth(enemyLife);
+
+        player = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
@@ -77,23 +80,28 @@ public class EnemyController : MonoBehaviour
 
     public void CheckPlayer()
     {
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) <= vision_range)
+        if (player[0] != null && Vector3.Distance(transform.position, player[0].transform.position) <= vision_range)
         {
             currState = EnemyState.Follow;
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        enemyLife = Mathf.Clamp(enemyLife - damage, 0, 100);
-        setHealth(enemyLife);
+        enemyLife -=damage;
+
+        if (enemyLife < 0)
+            enemyLife = 0;
+
         if (enemyLife > 0)
         {
             animator.SetTrigger("TakeDamage");
+            setHealth(enemyLife);
         }       
 
         else if (enemyLife <= damage && currState != EnemyState.Die)
         {
+            setHealth(enemyLife);
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
             currState = EnemyState.Die;
@@ -122,12 +130,12 @@ public class EnemyController : MonoBehaviour
 
     private void Follow()
     {
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) <= attack_range + 0.5f)
+        if (player[0] != null && Vector3.Distance(transform.position, player[0].transform.position) <= attack_range + 0.5f)
         {
             currState = EnemyState.Attack;
             animator.SetBool("Walk", false);
         }
-        else if (player != null && Vector3.Distance(transform.position, player.transform.position) > vision_range)
+        else if (player != null && Vector3.Distance(transform.position, player[0].transform.position) > vision_range)
         {
             currState = EnemyState.Idle;
             animator.SetBool("Walk", false);
@@ -135,8 +143,8 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetBool("Walk", true);
-            transform.position = Vector2.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, 0), mov_speed * Time.deltaTime);
-            if(transform.position.x >= player.transform.position.x)
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(player[0].transform.position.x, transform.position.y, 0), mov_speed * Time.deltaTime);
+            if(transform.position.x >= player[0].transform.position.x)
             {
                 transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             } 
@@ -150,7 +158,7 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) > attack_range + 0.5f)
+        if (player[0] != null && Vector3.Distance(transform.position, player[0].transform.position) > attack_range + 0.5f)
         {
             currState = EnemyState.Follow;
         }

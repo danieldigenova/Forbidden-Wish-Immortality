@@ -179,6 +179,15 @@ MonoBehaviour:
   mov_speed: 1.5
   attack_speed: 3
   jump_power: 25
+  playerTotalLife: 0
+  playerTotalShield: 0
+  playerTotalAttack: 0
+  playerTotalExperience: 0
+  level: 0
+  playerLife: 200
+  playerShield: 0
+  playerAttack: 15
+  playerExperience: 0
   isJumping: 0
   isAttacking: 0
   swordRange: {fileID: 2540366879329555202}

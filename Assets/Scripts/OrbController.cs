@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class OrbController : MonoBehaviour
 {
+    GameObject[] players;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        players = GameObject.FindGameObjectsWithTag("Player");
+        player = players[0];
     }
 
     // Update is called once per frame
@@ -18,7 +21,7 @@ public class OrbController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "Player"){
-            GameController.instance.PlayerExperience += 20;
+            player.GetComponent<PlayerController>().playerExperience += 20;
             Destroy(gameObject);
         }
     }
