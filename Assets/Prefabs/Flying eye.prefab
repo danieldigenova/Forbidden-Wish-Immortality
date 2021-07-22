@@ -20004,7 +20004,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.5019608}
+      maxColor: {r: 0.28627452, g: 0.74509805, b: 0.27058825, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -34333,7 +34333,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07484138, y: -0.059561983}
+  m_Offset: {x: -0.07484138, y: -0.084669694}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -34344,7 +34344,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2814817, y: 1.0348184}
+  m_Size: {x: 1.2814817, y: 1.085034}
   m_EdgeRadius: 0
 --- !u!50 &7461153281074017237
 Rigidbody2D:
@@ -34671,7 +34671,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.5019608}
+      maxColor: {r: 0.03137255, g: 0.58431375, b: 0.94509804, a: 0.5019608}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

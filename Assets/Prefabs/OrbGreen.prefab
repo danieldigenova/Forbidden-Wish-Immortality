@@ -7,13 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1289021106497550, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1900756431413560, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
       propertyPath: m_Name
       value: OrbGreen
       objectReference: {fileID: 0}
     - target: {fileID: 1900756431413560, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4283311113454432, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
       propertyPath: m_RootOrder
@@ -114,6 +118,18 @@ PrefabInstance:
     - target: {fileID: 198439215896751412, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
       propertyPath: playOnAwake
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198439215896751412, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 198439215896751412, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 198439215896751412, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.28627452
       objectReference: {fileID: 0}
     - target: {fileID: 199026062044450118, guid: 529eb4216865eba419c1a4a68d0b0388, type: 3}
       propertyPath: m_Materials.Array.size
