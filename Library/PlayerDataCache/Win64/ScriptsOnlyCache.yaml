@@ -78,33 +78,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 608}
     - Class: 114
-      Script: {instanceID: 1492}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 1660}
+      Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 2080}
+      Script: {instanceID: 2110}
     - Class: 114
-      Script: {instanceID: 2180}
+      Script: {instanceID: 2210}
     - Class: 114
-      Script: {instanceID: 2454}
+      Script: {instanceID: 2484}
     - Class: 114
-      Script: {instanceID: 2600}
+      Script: {instanceID: 2630}
     - Class: 114
-      Script: {instanceID: 2662}
+      Script: {instanceID: 2692}
     - Class: 114
-      Script: {instanceID: 2688}
+      Script: {instanceID: 2718}
     - Class: 114
-      Script: {instanceID: 2704}
+      Script: {instanceID: 2734}
     - Class: 114
-      Script: {instanceID: 2712}
+      Script: {instanceID: 2742}
     - Class: 114
-      Script: {instanceID: 2778}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 2988}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3092}
+      Script: {instanceID: 3120}
     - Class: 114
-      Script: {instanceID: 3274}
+      Script: {instanceID: 3302}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -155,21 +155,21 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1492}
+      Script: {instanceID: 1522}
     - Class: 114
-      Script: {instanceID: 2080}
+      Script: {instanceID: 2110}
     - Class: 114
-      Script: {instanceID: 2454}
+      Script: {instanceID: 2484}
     - Class: 114
-      Script: {instanceID: 2600}
+      Script: {instanceID: 2630}
     - Class: 114
-      Script: {instanceID: 2688}
+      Script: {instanceID: 2718}
     - Class: 114
-      Script: {instanceID: 2778}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 2988}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 3092}
+      Script: {instanceID: 3120}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -303,7 +303,7 @@ ScriptsOnlyBuild:
     className: CinemachinePixelPerfect
   - hash:
       serializedVersion: 2
-      Hash: 70b761e4c1529e49fac6bb9efcf46d68
+      Hash: c2f6dd809ee1cc4d673ae11d66af7591
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyController
@@ -381,7 +381,7 @@ ScriptsOnlyBuild:
     className: OrbController
   - hash:
       serializedVersion: 2
-      Hash: dc2905f4f1facebb79e164550a234ff6
+      Hash: 2e379d5da94b4d34a9b606fa7a2f6bab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -393,7 +393,7 @@ ScriptsOnlyBuild:
     className: StatsMenuController
   - hash:
       serializedVersion: 2
-      Hash: 5135ff28353890803eccfc33e3efcf10
+      Hash: d041b8a7dfe52f4a1b0c46f6a07fedf0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HealthPlayerBarController
@@ -471,12 +471,6 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: e84ec5fe9a5d472629c1d7d683513dab
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LevelController
-  - hash:
-      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -501,7 +495,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: a091c446e37befa37c1bc08a84a824f9
+      Hash: c31575de466133ae84b9c2bc559ca976
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -517,12 +511,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
-  - hash:
-      serializedVersion: 2
-      Hash: aa56340017bc63b8b94ab346f54cc8da
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HealthEnemyBarController
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -779,5 +767,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuInicial.unity
   - Assets/Scenes/Game.unity
-  playerPath: D:/Unity/Projetos/Forbidden-Wish-Immortality/Forbidden Wish Immortality_Data/Forbidden
-    Wish Immortality.exe
+  playerPath: "D:/UFABC-Notebook/12\xBAQuad/Intro Prog Jogos/PROJETO/Forbidden Wish
+    Immortality.exe"
