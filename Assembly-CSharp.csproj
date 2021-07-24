@@ -63,9 +63,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\StatsMenuController.cs" />
     <Compile Include="Assets\Scripts\HealthPlayerBarController.cs" />
-    <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\HealthEnemyBarController.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Imports\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Imports\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />

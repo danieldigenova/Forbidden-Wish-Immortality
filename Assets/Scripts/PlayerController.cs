@@ -1,50 +1,62 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script to control the player
+ **/
+
 public class PlayerController : MonoBehaviour
 {
-    //Status Points (Persistent)
+    // Status Points (Persistent)
     public int statusPointsLife;
     public int statusPointsShield;
     public int statusPointsAttack;
     public int pointsToSpend;
-    //Experience Points (Persistent)
+
+    // Experience Points (Persistent)
     public float playerTotalExperience;
-    public int level;
     public int playerExperience;
 
-    //Damage system variables
+    // Current level
+    public int level;
+    public Text LevelText;
+
+    // Base Stats
     public float playerLife;
     public float playerShield;
     public float playerAttack;
-
     public float mov_speed;
     public float attack_speed;
     public float jump_power;
+    public float attackRange;
 
-    //state variables
-    public bool isJumping;
+    // State variables
+    public bool isJumping = false;
     public bool isAttacking = false;
+    public bool isDead = false;
 
+    // Attack Cooldown
     private float cooldownAttack;
 
+    // Player Rigidbody2D
     private Rigidbody2D rb;
+
+    // Player Animator
     private Animator animator;
 
+    // Midpoint of sword attack range
     public Transform swordRange;
-    public float attackRange;
+
+    // Enemies layer
     public LayerMask enemies;
 
-    public Text LevelText;
-
-    private bool isDead = false;
-
+    // Start is called before the first frame update
     void Start()
     {
-
+        // Load the player that was saved
         PlayerData data = SaveSystem.LoadPlayer();
+        // If there is no saved player, then create a date with your information
         if (data != null)
         {
             level = data.level;
@@ -58,48 +70,71 @@ public class PlayerController : MonoBehaviour
             level = 1;
             statusPointsLife = 0;
             statusPointsAttack = 0;
-            statusPointsShield =0;
+            statusPointsShield = 0;
             pointsToSpend = 0;
         }
+
+        // Update player stats according to attribute points
         updateStatus();
+        
+        // Update Level Text to current level
         updateLevelText();
+
+        // Set initial experience
         playerExperience = 0;
 
+        // Get Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
+
+        // Get animator component
         animator = GetComponent<Animator>(); 
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if(!isDead){
+        // If the player is not dead, check if any action keys were pressed
+        if (!isDead){
             Move();
             Jump();
             Attack();
         }
+
+        // Check if the experience has reached the mark for level up
         if (playerExperience>=20)
         {
+            // Call the function to level up
             levelUp();
+            // Give points to spend
             pointsToSpend += 5;
+            // Reset current experience
             playerExperience = 0;
         }
 
-        // Update life UI
-        //life_text.text = "Player Life: " + GameController.instance.PlayerLife;
     }
 
+    // Function for level up
     void levelUp()
     {
+        // Increase the level
         level += 1;
+
+        // Update player stats according to attribute points
         updateStatus();
+
+        // Update Level Text to current level
         updateLevelText();
     }
 
+    // Function to update player stats according to status points
     void updateStatus()
     {
         playerLife = 100 + (0.1f* statusPointsLife);
         playerAttack = 15 + (0.1f * statusPointsAttack);
         playerShield = 110 + (0.1f * statusPointsShield);
     }
+
+    // Function to update the current status points of each attribute
     public void updateStatusPoints(int attack, int defense, int life, int pointsToSpend)
     {
         statusPointsLife = life;
@@ -108,81 +143,111 @@ public class PlayerController : MonoBehaviour
         this.pointsToSpend = pointsToSpend;
     }
 
+    // Fuction to update Level Text
     void updateLevelText()
     {
         LevelText.text = "Lvl. " + level;
     }
 
+    // Function that moves the player
     private void Move()
     {
-
+        // Moves the player according to horizontal key press
+        // The movement speed is according to the movement speed attribute.
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * mov_speed;
-        if(Input.GetAxis("Horizontal") > 0)
+
+        // Move right
+        if (Input.GetAxis("Horizontal") > 0)
         {
+            // Play walk animation
             animator.SetBool("Walk", true);
+            // Turn to the right side
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
         }
+        // Move left
         else if (Input.GetAxis("Horizontal") < 0)
         {
+            // Play walk animation
             animator.SetBool("Walk", true);
+            // Turn to the left side
             transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
-        } 
+        }
+        // Stopped
         else
         {
+            // Return to idle animation
             animator.SetBool("Walk", false);
         }
         
     }
+
+    // Function for the player to jump
     private void Jump()
     {
         if(Input.GetButtonDown("Jump") && !isJumping)
         {
+            // Exerts a force on the player according to the jump force
             rb.AddForce(new Vector2(0, jump_power), ForceMode2D.Impulse);
         }
     }
 
+    // Function to check if the player is on the ground
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Check if the player is on the ground
         if (collision.gameObject.tag == "Ground")
         {
+            // Return to idle animation
             isJumping = false;
             animator.SetBool("Jump", false);
         }
     }
 
+    // Function to check if the player is jumping
     private void OnCollisionExit2D(Collision2D collision)
     {
+        // Check if the player is on the ground
         if (collision.gameObject.tag == "Ground")
         {
+            // Play jump animation
             isJumping = true;
             animator.SetBool("Jump", true);
         }
     }
 
+    // Player attack function
     private void Attack()
     {
+        // Check if it is in attack cooldown
         if (isAttacking)
         {
+            // Check if the attack cooldown has already been exceeded to allow another attack
             cooldownAttack += Time.deltaTime;
             if (cooldownAttack > 1/attack_speed)
             {
                 isAttacking = false;
             }   
-        } 
+        }
+        // If he is not on attack timeout, he can make a new attack
         else
         {
+            // If the Z key is pressed, performs an attack
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                // Draw one of the 3 attack animations to animate
                 int type_attack = Random.Range(1, 4);
                 animator.SetTrigger("Attack" + type_attack);
 
+                // Enter attack cooldown
                 isAttacking = true;
                 cooldownAttack = 0.0f;
 
+                // Checks all affected enemies in player's circle of attack
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordRange.position, attackRange, enemies);
 
-                foreach(Collider2D enemy in hitEnemies)
+                // Damages all enemies affected by the attack
+                foreach (Collider2D enemy in hitEnemies)
                 {
                     enemy.GetComponent<EnemyController>().TakeDamage(playerAttack);
                 }
@@ -190,41 +255,53 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Draw a sphere around the midpoint of sword attack range
     private void OnDrawGizmosSelected()
     {
+        // Checks if the point is set
         if (swordRange == null)
             return;
 
+        // Draw the sphere in midpoint of sword attack range, with radius according to attack range
         Gizmos.DrawWireSphere(swordRange.position, attackRange);
     }
 
-
+    // Function that deals damage to the player according to a value
     public void TakeDamage(float damage)
     {
+        // Reduces player's health with damage value
         playerLife -= damage;
+
+        // Sets life at 0 if below that
         if (playerLife < 0)
             playerLife = 0;
 
+        // If the hit wasn't fatal, then it reduces the player's health and performs the hurt animation
         if (playerLife > 0)
         {
+            // Play the hurt animation
             animator.SetTrigger("TakeDamage");
         }
-
+        // If the hit was fatal, performs a hurt animation, followed by a death animation, and puts it in the die state. After that, call the showGameOvers() function.
         else if (playerLife <= damage && !isDead)
         {
+            // Play the hurt and death animations
             animator.SetBool("Dead", true);
             animator.SetTrigger("TakeDamage");
+            // Set the current state to die
             isDead = true;
-            StartCoroutine(Die());            
+            StartCoroutine(showGameOver());            
         }
 
     }
 
-    private IEnumerator Die()
+    // Function to show Game Over UI
+    private IEnumerator showGameOver()
     {
-        animator.SetBool("Dead", true);
+        // Wait for 2 seconds
         yield return new WaitForSeconds(2);
 
+        // Show Game Over UI
         GameController.instance.ShowGameOver();
     }
 

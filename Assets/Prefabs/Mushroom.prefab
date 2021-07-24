@@ -9800,6 +9800,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18eb963c185f9247a434490208c1717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mov_speed: 0.5
+  vision_range: 3
+  attack_range: 0.6
+  enemyAttack: 0
+  enemyLife: 0
+  cooldownAttack: 1
   enemyLevel: 0
   levelText: {fileID: 4771359316391268219}
   animator: {fileID: 2927633989243201018}
@@ -9807,13 +9813,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  mov_speed: 0.5
-  vision_range: 3
-  attack_range: 0.6
-  cooldownAttack: 1
-  EnemyAttack: 0
-  enemyLife: 0
-  swordRange: {fileID: 2927633990451979554}
+  meleeRange: {fileID: 2927633990451979554}
   players:
     serializedVersion: 2
     m_Bits: 64

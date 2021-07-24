@@ -1508,8 +1508,8 @@ MonoBehaviour:
   - {fileID: 2927633989243201020, guid: 239e9a1e8ba597248af58b3e7fcb35db, type: 3}
   - {fileID: 9024803204485525749, guid: 88bc96653ab3d3944b843984ed9bbeb6, type: 3}
   - {fileID: 7461153281074017234, guid: 3e5f7b78f9a86ec41a210b1267bb8475, type: 3}
-  levelShow: {fileID: 261534276}
   level: 0
+  levelShow: {fileID: 261534276}
 --- !u!4 &736976625
 Transform:
   m_ObjectHideFlags: 0
@@ -3147,7 +3147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89862f2785a5584498babd710bfb617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartBarComplete: {fileID: 2125598303}
+  healthBarComplete: {fileID: 2125598303}
   LifeText: {fileID: 730776928}
 --- !u!1 &1786120380
 GameObject:
