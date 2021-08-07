@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
         levelText.text = "lvl. " + enemyLevel;
 
         // Set the attributes of enemies according to their level.
-        this.enemyLife = (100+ 0.5f*enemyLevel);
+        this.enemyLife = (100 + 0.5f * enemyLevel);
         this.enemyAttack = 10 + enemyLevel;
         setMaxHealth(enemyLife);
 
@@ -160,8 +160,8 @@ public class EnemyController : MonoBehaviour
 
         // Destroys the enemy's gameObject
         Destroy(gameObject);
-        
-        yield return null;        
+
+        yield return null;
     }
 
     // Function that makes the enemy follow the player
@@ -190,18 +190,18 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("Walk", true);
             // Moves the enemy towards the player according to their movement speed
             transform.position = Vector2.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, 0), mov_speed * Time.deltaTime);
-            if(transform.position.x >= player.transform.position.x)
+            if (transform.position.x >= player.transform.position.x)
             {
                 // Turn the angle to face the player
                 transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-            } 
+            }
             else
             {
                 // Turn the angle to face the player
                 transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
             }
         }
-        
+
     }
 
     // Function that makes the enemy attack the player if he is in his attack range
@@ -267,4 +267,5 @@ public class EnemyController : MonoBehaviour
         // Set bar fills according to health
         healthBarFill.color = healthBarCollor.Evaluate(healthbar.normalizedValue);
     }
+
 }

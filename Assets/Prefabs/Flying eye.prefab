@@ -14978,7 +14978,7 @@ GameObject:
   - component: {fileID: 2194895388927699874}
   m_Layer: 7
   m_Name: Flying eye
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15098,7 +15098,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!114 &7461153281074017235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15120,10 +15120,7 @@ MonoBehaviour:
   enemyLevel: 0
   levelText: {fileID: 4902335451350919499}
   animator: {fileID: 2194895388927699874}
-  player:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  player: {fileID: 0}
   meleeRange: {fileID: 7461153280402699020}
   players:
     serializedVersion: 2

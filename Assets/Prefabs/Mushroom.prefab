@@ -9648,7 +9648,7 @@ GameObject:
   - component: {fileID: 2927633989243201021}
   m_Layer: 7
   m_Name: Mushroom
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9768,7 +9768,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!95 &2927633989243201018
 Animator:
   serializedVersion: 3
@@ -9809,10 +9809,7 @@ MonoBehaviour:
   enemyLevel: 0
   levelText: {fileID: 4771359316391268219}
   animator: {fileID: 2927633989243201018}
-  player:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  player: {fileID: 0}
   meleeRange: {fileID: 2927633990451979554}
   players:
     serializedVersion: 2

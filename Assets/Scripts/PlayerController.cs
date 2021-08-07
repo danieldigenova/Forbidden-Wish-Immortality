@@ -202,6 +202,21 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
             animator.SetBool("Jump", false);
         }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if(transform.eulerAngles == new Vector3(0.0f, 180.0f, 0.0f))
+            {
+                // Repels touching an enemy
+                rb.AddForce(new Vector2(2, 2), ForceMode2D.Impulse);
+            } 
+            else
+            {
+                // Repels touching an enemy
+                rb.AddForce(new Vector2(-2, 2), ForceMode2D.Impulse);
+            }
+            
+        }
     }
 
     // Function to check if the player is jumping

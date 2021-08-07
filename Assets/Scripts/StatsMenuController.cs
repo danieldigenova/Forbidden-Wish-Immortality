@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /*
  * Script to control the stats menu
@@ -91,7 +92,7 @@ public class StatsMenuController : MonoBehaviour
     }
 
     // Function to resume the game
-    void Resume()
+    public void Resume()
     {
         // No longer show the Pause menu UI
         pauseMenuIU.SetActive(false);
@@ -99,6 +100,12 @@ public class StatsMenuController : MonoBehaviour
         Time.timeScale = 1f;
         // Resume the game
         gameIsPaused = false;
+    }
+
+    // Quit Game Function
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     // Function that adds a point to spend for the attack attribute
@@ -155,5 +162,10 @@ public class StatsMenuController : MonoBehaviour
             // Save player progress stats
             saveStats();
         }
+    }
+
+    public void returnMenu()
+    {
+        SceneManager.LoadScene("MenuInicial");
     }
 }

@@ -36,12 +36,26 @@ public class GameController : MonoBehaviour
         // Set Game controller instance
         instance = this;
 
-        // Initial level
-        level = 1;
+        // Load the game that was saved
+        GameData data = SaveSystem.LoadGame();
+        // If there is no saved game, then create a date with your information
+        if (data != null)
+        {
+            level = data.level;
+        }
+        else
+        {
+            // Initial level
+            level = 1;
+        }
 
-        // Instantiate one of the 4 available enemy prefabs
-        int i = Random.Range(0, 4);
-        enemyInstance = Instantiate(Enemies[i]);
+        // Modify the text of the level
+        levelShow.text = "Fase " + level;
+
+        instantiateEnemy();
+
+        // Leave the scale that time passes at one
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -57,6 +71,9 @@ public class GameController : MonoBehaviour
                 
                 // Go to the next level
                 nextLevel();
+
+                // Save current game
+                SaveSystem.SaveGame(this);
 
                 // Instantiate one of the 4 available enemy prefabs in the next level
                 int i = Random.Range(0, 4);
@@ -109,9 +126,23 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
-    // Quit Game Function
-    public void QuitGame()
+    // Function to start new game
+    public void NewGame()
     {
-        Application.Quit();
+        // Initial level
+        level = 1;
+
+        // Modify the text of the level
+        levelShow.text = "Fase " + level;
+
+        // Go to the game scene
+        SceneManager.LoadScene("Game");
+    }
+
+    private void instantiateEnemy()
+    {
+        // Instantiate one of the 4 available enemy prefabs
+        int i = Random.Range(0, 4);
+        enemyInstance = Instantiate(Enemies[i]);
     }
 }
