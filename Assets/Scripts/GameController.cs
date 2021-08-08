@@ -29,7 +29,14 @@ public class GameController : MonoBehaviour
     // Current level
     public int level;
     public Text levelShow;
-    
+
+    // Maximum level reached
+    public int max_level;
+
+    // Previous and Next Buttons
+    public Button previous_button;
+    public Button next_button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +49,36 @@ public class GameController : MonoBehaviour
         if (data != null)
         {
             level = data.level;
+            max_level = data.max_level;
+
+
+            if (max_level > level)
+            {
+                next_button.gameObject.SetActive(true);
+            } 
+            else
+            {
+                next_button.gameObject.SetActive(false);
+            }
+
+            if (level > 1)
+            {
+                previous_button.gameObject.SetActive(true);
+            }
+            else
+            {
+                previous_button.gameObject.SetActive(false);
+            }
         }
         else
         {
             // Initial level
             level = 1;
+            max_level = 1;
+
+            previous_button.gameObject.SetActive(false);
+            next_button.gameObject.SetActive(false);
+
         }
 
         // Modify the text of the level
@@ -86,11 +118,87 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void goNextLevel()
+    {
+        // Destroy current enemy
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+
+        // Save current player
+        SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
+
+        // Go to the next level
+        nextLevel();
+
+        // Save current game
+        SaveSystem.SaveGame(this);
+
+        // Instantiate one of the 4 available enemy prefabs in the next level
+        int i = Random.Range(0, 4);
+        enemyInstance = Instantiate(Enemies[i]);
+    }
+
     // Function to call the new level
     void nextLevel()
     {
         // Increases the level
         level += 1;
+
+        // Increases the max level
+        if (level >= max_level)
+        {
+            max_level = level;
+            previous_button.gameObject.SetActive(true);
+            next_button.gameObject.SetActive(false);
+        } 
+        else
+        {
+            previous_button.gameObject.SetActive(true);
+            next_button.gameObject.SetActive(true);
+        }            
+
+        //Modify the text of the level
+        levelShow.text = "Fase " + level;
+
+        // Restart Position of Player
+        RestartPosition();
+        new WaitForSecondsRealtime(0.5f);
+    }
+
+    public void goPreviousLevel()
+    {
+        // Destroy current enemy
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+
+        // Save current player
+        SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
+
+        // Go to the next level
+        previousLevel();
+
+        // Save current game
+        SaveSystem.SaveGame(this);
+
+        // Instantiate one of the 4 available enemy prefabs in the next level
+        int i = Random.Range(0, 4);
+        enemyInstance = Instantiate(Enemies[i]);
+    }
+
+    void previousLevel()
+    {
+        // Increases the level
+        level -= 1;
+
+        if (level == 1)
+        {
+            previous_button.gameObject.SetActive(false);
+            next_button.gameObject.SetActive(true);
+        }
+        else
+        {
+            previous_button.gameObject.SetActive(true);
+            next_button.gameObject.SetActive(true);
+        }
+
         //Modify the text of the level
         levelShow.text = "Fase " + level;
 
