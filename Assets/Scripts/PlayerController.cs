@@ -15,12 +15,16 @@ public class PlayerController : MonoBehaviour
     public int pointsToSpend;
 
     // Experience Points (Persistent)
-    public float playerTotalExperience;
-    public int playerExperience;
+    //public float playerTotalExperience;
+    //public int playerExperience;
 
     // Current level
     public int level;
     public Text LevelText;
+
+    // Current EXP
+    public int exp;
+    public int expToLevelUp;
 
     // Base Stats
     public float playerLife;
@@ -60,6 +64,8 @@ public class PlayerController : MonoBehaviour
         if (data != null)
         {
             level = data.level;
+            exp = data.exp;
+            expToLevelUp = data.expToLevelUp;
             statusPointsLife = data.statusPointsLife;
             statusPointsAttack = data.statusPointsAttack;
             statusPointsShield = data.statusPointsShield;
@@ -68,6 +74,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             level = 1;
+            exp = 0;
+            expToLevelUp = 10;
             statusPointsLife = 0;
             statusPointsAttack = 0;
             statusPointsShield = 0;
@@ -81,7 +89,7 @@ public class PlayerController : MonoBehaviour
         updateLevelText();
 
         // Set initial experience
-        playerExperience = 0;
+        //playerExperience = 0;
 
         // Get Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
@@ -101,14 +109,14 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check if the experience has reached the mark for level up
-        if (playerExperience>=20)
+        if(exp >= expToLevelUp)
         {
             // Call the function to level up
             levelUp();
             // Give points to spend
             pointsToSpend += 5;
             // Reset current experience
-            playerExperience = 0;
+            exp = 0;
         }
 
     }
@@ -118,6 +126,12 @@ public class PlayerController : MonoBehaviour
     {
         // Increase the level
         level += 1;
+
+        // Reset current EXP
+        exp = 0;
+
+        // Set new EXP to Level Up
+        expToLevelUp = level * 10;
 
         // Update player stats according to attribute points
         updateStatus();

@@ -7,6 +7,10 @@ public class PlayerData
 {
     // Current level
     public int level;
+
+    // Current EXP
+    public int exp;
+    public int expToLevelUp;
     
     // Status Points
     public int statusPointsLife;
@@ -18,6 +22,8 @@ public class PlayerData
     public PlayerData(PlayerController player)
     {
         level = player.level;
+        exp = player.exp;
+        expToLevelUp = player.expToLevelUp;
         statusPointsLife = player.statusPointsLife;
         statusPointsShield = player.statusPointsShield;
         statusPointsAttack = player.statusPointsAttack;

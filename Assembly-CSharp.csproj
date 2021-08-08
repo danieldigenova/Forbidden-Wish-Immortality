@@ -64,12 +64,13 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\StatsMenuController.cs" />
     <Compile Include="Assets\Scripts\HealthPlayerBarController.cs" />
+    <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Imports\Hero Knight - Pixel Art\Demo\HeroKnight.cs" />
     <Compile Include="Assets\Imports\Hero Knight - Pixel Art\ColorSwap\ColorSwap_HeroKnight.cs" />
     <Compile Include="Assets\Imports\Hero Knight - Pixel Art\Demo\DestroyEvent_HeroKnight.cs" />
-    <Compile Include="Assets\Scripts\MenuController.cs" />
+    <Compile Include="Assets\Scripts\EXPPlayerBarController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Imports\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
