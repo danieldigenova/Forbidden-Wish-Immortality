@@ -26,8 +26,11 @@ public class PlayerController : MonoBehaviour
     public int exp;
     public int expToLevelUp;
 
-    // Base Stats
+    // Current Life
     public float playerLife;
+
+    // Base Stats
+    public float playerMaxLife;
     public float playerShield;
     public float playerAttack;
     public float mov_speed;
@@ -65,17 +68,26 @@ public class PlayerController : MonoBehaviour
         {
             level = data.level;
             exp = data.exp;
+            playerLife = data.playerLife;
             expToLevelUp = data.expToLevelUp;
             statusPointsLife = data.statusPointsLife;
             statusPointsAttack = data.statusPointsAttack;
             statusPointsShield = data.statusPointsShield;
             pointsToSpend = data.pointsToSpend;
+
+            // if the player has low life, he recovers half his life
+            if (playerLife < (100 + (1f * statusPointsLife)) / 2)
+            {
+                recoverLife((100 + (1f * statusPointsLife)) / 2 - playerLife);
+            }
         }
         else
         {
             level = 1;
             exp = 0;
-            expToLevelUp = 10;
+            playerLife = 100;
+            playerMaxLife = 100;
+            expToLevelUp = 2;
             statusPointsLife = 0;
             statusPointsAttack = 0;
             statusPointsShield = 0;
@@ -119,6 +131,8 @@ public class PlayerController : MonoBehaviour
             exp = 0;
         }
 
+        // Update player stats according to attribute points
+        updateStatus();
     }
 
     // Function for level up
@@ -131,10 +145,11 @@ public class PlayerController : MonoBehaviour
         exp = 0;
 
         // Set new EXP to Level Up
-        expToLevelUp = level * 10;
+        // Function based on the experience curve of Dungeons and Dragons
+        expToLevelUp = ((5 * ((int) Mathf.Pow(level, 2))) - (5 * level));
 
-        // Update player stats according to attribute points
-        updateStatus();
+        // Recover player life
+        playerLife = playerMaxLife;
 
         // Update Level Text to current level
         updateLevelText();
@@ -143,9 +158,13 @@ public class PlayerController : MonoBehaviour
     // Function to update player stats according to status points
     void updateStatus()
     {
-        playerLife = 100 + (0.1f* statusPointsLife);
-        playerAttack = 15 + (0.1f * statusPointsAttack);
+        playerMaxLife = 100 + (1f* statusPointsLife);
+        playerAttack = 15 + (0.5f * statusPointsAttack);
         playerShield = 110 + (0.1f * statusPointsShield);
+    }
+
+    public void recoverLife(float value) {
+        playerLife += value;
     }
 
     // Function to update the current status points of each attribute

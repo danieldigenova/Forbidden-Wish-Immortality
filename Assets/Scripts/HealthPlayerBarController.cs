@@ -29,9 +29,9 @@ public class HealthPlayerBarController : MonoBehaviour
     void Update()
     {
         // Fills the bar according to the player's current health in relation to his maximum health
-        currfillValue = player.GetComponent<PlayerController>().playerLife / (100 + (0.1f * player.GetComponent<PlayerController>().statusPointsLife));
+        currfillValue = player.GetComponent<PlayerController>().playerLife / player.GetComponent<PlayerController>().playerMaxLife;
         healthBarComplete.GetComponent<Image>().fillAmount = currfillValue;
         // Show the value of Player current life
-        LifeText.text = player.GetComponent<PlayerController>().playerLife + "/" + (100 + (0.1f * player.GetComponent<PlayerController>().statusPointsLife));
+        LifeText.text = player.GetComponent<PlayerController>().playerLife + "/" + player.GetComponent<PlayerController>().playerMaxLife;
     }
 }

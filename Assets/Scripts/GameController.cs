@@ -78,7 +78,6 @@ public class GameController : MonoBehaviour
 
             previous_button.gameObject.SetActive(false);
             next_button.gameObject.SetActive(false);
-
         }
 
         // Modify the text of the level

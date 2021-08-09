@@ -159,6 +159,7 @@ public class StatsMenuController : MonoBehaviour
             updateIU();
             // Update player stats according to status points
             player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, lifePoints, pointsToSpend);
+            player.GetComponent<PlayerController>().recoverLife(1);
             // Save player progress stats
             saveStats();
         }
