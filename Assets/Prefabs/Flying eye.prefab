@@ -14992,7 +14992,7 @@ Transform:
   m_GameObject: {fileID: 7461153281074017234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.78, y: -0.56, z: 0}
-  m_LocalScale: {x: 0.63255, y: 0.63944995, z: 1}
+  m_LocalScale: {x: 0.63255, y: 0.63945, z: 1}
   m_Children:
   - {fileID: 7461153280402699020}
   - {fileID: 7461153279965363278}
@@ -15113,8 +15113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mov_speed: 1
   vision_range: 3
-  attack_range: 0.5
+  attack_range: 0.6
   enemyAttack: 0
+  enemyDefense: 0
   enemyLife: 0
   cooldownAttack: 1
   enemyLevel: 0

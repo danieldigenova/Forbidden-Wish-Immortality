@@ -2751,7 +2751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3525,7 +3525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -8911,7 +8911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2540366880267433723, guid: fbef634fffb3469469fdc81d8dc5a004, type: 3}
       propertyPath: jump_power
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540366880267433723, guid: fbef634fffb3469469fdc81d8dc5a004, type: 3}
+      propertyPath: playerDefense
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2540366880267433723, guid: fbef634fffb3469469fdc81d8dc5a004, type: 3}
       propertyPath: EXPCollor.atime1

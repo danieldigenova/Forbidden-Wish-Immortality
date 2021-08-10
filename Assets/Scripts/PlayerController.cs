@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     // Base Stats
     public float playerMaxLife;
-    public float playerShield;
+    public float playerDefense;
     public float playerAttack;
     public float mov_speed;
     public float attack_speed;
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
     {
         playerMaxLife = 100 + (1f* statusPointsLife);
         playerAttack = 15 + (0.5f * statusPointsAttack);
-        playerShield = 110 + (0.1f * statusPointsShield);
+        playerDefense = 10 + (0.5f * statusPointsShield);
     }
 
     public void recoverLife(float value) {
@@ -241,12 +241,12 @@ public class PlayerController : MonoBehaviour
             if(transform.eulerAngles == new Vector3(0.0f, 180.0f, 0.0f))
             {
                 // Repels touching an enemy
-                rb.AddForce(new Vector2(2, 2), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(-1, 1), ForceMode2D.Impulse);
             } 
             else
             {
                 // Repels touching an enemy
-                rb.AddForce(new Vector2(-2, 2), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(1, 1), ForceMode2D.Impulse);
             }
             
         }
@@ -318,11 +318,12 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         // Reduces player's health with damage value
-        playerLife -= damage;
+        //playerLife -= damage;
+        playerLife = Mathf.Clamp(playerLife + playerDefense - damage, 0, playerLife);
 
         // Sets life at 0 if below that
-        if (playerLife < 0)
-            playerLife = 0;
+        //if (playerLife < 0)
+            //playerLife = 0;
 
         // If the hit wasn't fatal, then it reduces the player's health and performs the hurt animation
         if (playerLife > 0)

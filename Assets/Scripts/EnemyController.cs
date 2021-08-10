@@ -11,7 +11,6 @@ public enum EnemyState
     Attack
 };
 
-
 /**
  * Script for controlling an AI for melee enemies
  */
@@ -22,6 +21,7 @@ public class EnemyController : MonoBehaviour
     public float vision_range;
     public float attack_range;
     public float enemyAttack;
+    public float enemyDefense;
     public float enemyLife;
 
     // Attack Cooldown
@@ -63,10 +63,28 @@ public class EnemyController : MonoBehaviour
         enemyLevel = GameController.instance.level;
         levelText.text = "lvl. " + enemyLevel;
 
-        // Set the attributes of enemies according to their level.
-        this.enemyLife = (100 + 0.5f * enemyLevel);
-        this.enemyAttack = 10 + enemyLevel;
-        setMaxHealth(enemyLife);
+        // Boss
+        if(enemyLevel % 5 == 0)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);    
+            this.transform.localScale += this.transform.localScale;
+            this.attack_range = this.attack_range * 2;
+
+            // Set the attributes of enemies according to their level.
+            this.enemyLife = (100 + 1f * enemyLevel);
+            this.enemyAttack = 20 + enemyLevel;
+            this.enemyDefense = 5 + 1f * enemyLevel;
+            setMaxHealth(enemyLife);
+        }
+        // Normal
+        else
+        {
+            // Set the attributes of enemies according to their level.
+            this.enemyLife = (100 + 0.5f * enemyLevel);
+            this.enemyAttack = 15 + enemyLevel;
+            this.enemyDefense = 5 + 0.5f * enemyLevel;
+            setMaxHealth(enemyLife);
+        }
 
         // Find the GameObject of the Player
         player = GameObject.FindGameObjectWithTag("Player");
@@ -113,11 +131,12 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         // Reduces enemy's health with damage value
-        enemyLife -= damage;
+        //enemyLife -= damage;
+        enemyLife = Mathf.Clamp(enemyLife + enemyDefense - damage, 0, enemyLife);
 
         // Sets life at 0 if below that
-        if (enemyLife < 0)
-            enemyLife = 0;
+        //if (enemyLife < 0)
+         //   enemyLife = 0;
 
         // If the hit wasn't fatal, then it reduces the enemy's health and performs the hurt animation
         if (enemyLife > 0)
@@ -152,11 +171,19 @@ public class EnemyController : MonoBehaviour
         // Show the experience orbs
         orbGreenPrefab.SetActive(true);
         GameObject orbGreen = Instantiate<GameObject>(orbGreenPrefab);
-        orbGreen.transform.position = new Vector3(gameObject.transform.position.x + 0.2f, gameObject.transform.position.y - 0.45f, 0);
+        orbGreen.transform.position = new Vector3(gameObject.transform.position.x + 0.2f, -1, 0);
 
         orbBluePrefab.SetActive(true);
         GameObject orbBlue = Instantiate<GameObject>(orbBluePrefab);
-        orbBlue.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, gameObject.transform.position.y - 0.45f, 0);
+        orbBlue.transform.position = new Vector3(gameObject.transform.position.x - 0.2f, -1, 0);
+
+        // Extra orb for boss enemy
+        if (enemyLevel % 5 == 0)
+        {
+            orbGreenPrefab.SetActive(true);
+            GameObject orbGreenExtra = Instantiate<GameObject>(orbBluePrefab);
+            orbGreenExtra.transform.position = new Vector3(gameObject.transform.position.x + 0.6f, -1, 0);
+        }
 
         // Destroys the enemy's gameObject
         Destroy(gameObject);
