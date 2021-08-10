@@ -37,6 +37,14 @@ public class GameController : MonoBehaviour
     public Button previous_button;
     public Button next_button;
 
+    //Grounds
+    public GameObject[] Grounds;
+    private GameObject groundInstance;
+
+    //Backgrounds
+    public GameObject[] BackgroundGroups;
+    private GameObject backgroundGroupInstance;  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +95,9 @@ public class GameController : MonoBehaviour
 
         // Leave the scale that time passes at one
         Time.timeScale = 1f;
+
+        instantiateBackgroundGroup();
+        instantiateGround();
     }
 
     // Update is called once per frame
@@ -95,7 +106,7 @@ public class GameController : MonoBehaviour
         // If the enemy in the level has already been defeated, if you lean against the wall on the right, it moves to the next level
         if (enemyInstance == null)
         {
-            if (player.GetComponent<Transform>().position.x > 3)
+            if (player.GetComponent<Transform>().position.x > 2.97f)
             {
                 // Save current player
                 SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
@@ -109,6 +120,8 @@ public class GameController : MonoBehaviour
                 // Instantiate one of the 4 available enemy prefabs in the next level
                 int i = Random.Range(0, 4);
                 enemyInstance = Instantiate(Enemies[i]);
+
+                
             }
         }
         if (Input.GetKey(KeyCode.Escape))
@@ -134,6 +147,7 @@ public class GameController : MonoBehaviour
         // Instantiate one of the 4 available enemy prefabs in the next level
         int i = Random.Range(0, 4);
         enemyInstance = Instantiate(Enemies[i]);
+
     }
 
     // Function to call the new level
@@ -157,6 +171,9 @@ public class GameController : MonoBehaviour
 
         //Modify the text of the level
         levelShow.text = "Fase " + level;
+
+        instantiateBackgroundGroup();
+        instantiateGround();
 
         // Restart Position of Player
         RestartPosition();
@@ -251,5 +268,27 @@ public class GameController : MonoBehaviour
         // Instantiate one of the 4 available enemy prefabs
         int i = Random.Range(0, 4);
         enemyInstance = Instantiate(Enemies[i]);
+    }
+
+    private void instantiateGround()
+    {
+        // Instantiate one of the 4 available enemy prefabs
+        if(groundInstance != null){
+            groundInstance.SetActive(false);
+        }
+        int i = Random.Range(0, 4);
+        groundInstance = Grounds[i];
+        groundInstance.SetActive(true);
+    }
+
+    private void instantiateBackgroundGroup()
+    {
+        // Instantiate one of the 4 available enemy prefabs
+        if(backgroundGroupInstance != null){
+            backgroundGroupInstance.SetActive(false);
+        }
+        int i = Random.Range(0, 4);
+        backgroundGroupInstance = BackgroundGroups[i];
+        backgroundGroupInstance.SetActive(true);
     }
 }
