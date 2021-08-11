@@ -58,6 +58,18 @@ public class PlayerController : MonoBehaviour
     // Enemies layer
     public LayerMask enemies;
 
+    //Sound
+    public AudioSource runSource;
+    public AudioClip[] runClips;
+
+    public AudioSource jumpSource;
+    public AudioClip[] jumpClips;
+
+    public AudioSource swordSource;
+    public AudioClip[] swordClips;
+
+    public int flagActiveSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +120,8 @@ public class PlayerController : MonoBehaviour
 
         // Get animator component
         animator = GetComponent<Animator>(); 
+
+        flagActiveSound = 0;
     }
 
     // Update is called once per frame
@@ -197,6 +211,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Walk", true);
             // Turn to the right side
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+
+            flagActiveSound += 1;
+
+            if(!isJumping && flagActiveSound % 6 == 0){
+                int randomIndex = Random.Range(0, runClips.Length);
+                runSource.PlayOneShot(runClips[randomIndex]);
+            }
         }
         // Move left
         else if (Input.GetAxis("Horizontal") < 0)
@@ -205,6 +226,14 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Walk", true);
             // Turn to the left side
             transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+
+            flagActiveSound += 1;
+
+            if(!isJumping && flagActiveSound % 6 == 0){
+                int randomIndex = Random.Range(0, runClips.Length);
+                runSource.PlayOneShot(runClips[randomIndex]);
+            }
+            
         }
         // Stopped
         else
@@ -222,6 +251,9 @@ public class PlayerController : MonoBehaviour
         {
             // Exerts a force on the player according to the jump force
             rb.AddForce(new Vector2(0, jump_power), ForceMode2D.Impulse);
+
+            int randomIndex = Random.Range(0, jumpClips.Length);
+            jumpSource.PlayOneShot(jumpClips[randomIndex]);
         }
     }
 
@@ -283,6 +315,9 @@ public class PlayerController : MonoBehaviour
             // If the Z key is pressed, performs an attack
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                int randomIndex = Random.Range(0, swordClips.Length);
+                swordSource.PlayOneShot(swordClips[randomIndex]);
+
                 // Draw one of the 3 attack animations to animate
                 int type_attack = Random.Range(1, 4);
                 animator.SetTrigger("Attack" + type_attack);
