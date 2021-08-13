@@ -32,6 +32,6 @@ public class HealthPlayerBarController : MonoBehaviour
         currfillValue = player.GetComponent<PlayerController>().playerLife / player.GetComponent<PlayerController>().playerMaxLife;
         healthBarComplete.GetComponent<Image>().fillAmount = currfillValue;
         // Show the value of Player current life
-        LifeText.text = player.GetComponent<PlayerController>().playerLife + "/" + player.GetComponent<PlayerController>().playerMaxLife;
+        LifeText.text = (int)player.GetComponent<PlayerController>().playerLife + "/" + player.GetComponent<PlayerController>().playerMaxLife;
     }
 }

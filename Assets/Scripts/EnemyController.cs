@@ -259,7 +259,10 @@ public class EnemyController : MonoBehaviour
             // Damages all players affected by the attack
             foreach (Collider2D play in hitPlayers)
             {
-                play.GetComponent<PlayerController>().TakeDamage(enemyAttack);
+                if(play.GetComponent<PlayerController>().transform.position.y <=  gameObject.transform.position.y){
+                    play.GetComponent<PlayerController>().TakeDamage(enemyAttack);
+                }
+                
             }
         }
     }

@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Linq;
+using System;
 /*
  * Script to control the player
  **/
@@ -45,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     // Attack Cooldown
     private float cooldownAttack;
+
+    //Recovery Life Cooldown
+    private float cooldownRecoveryLife;
 
     // Player Rigidbody2D
     private Rigidbody2D rb;
@@ -147,6 +151,13 @@ public class PlayerController : MonoBehaviour
 
         // Update player stats according to attribute points
         updateStatus();
+
+        cooldownRecoveryLife = Math.Max(0, cooldownRecoveryLife - Time.deltaTime);
+
+        if(playerLife < playerMaxLife && cooldownRecoveryLife == 0){
+            playerLife += 0.02f;
+        }
+
     }
 
     // Function for level up
@@ -215,7 +226,7 @@ public class PlayerController : MonoBehaviour
             flagActiveSound += 1;
 
             if(!isJumping && flagActiveSound % 6 == 0){
-                int randomIndex = Random.Range(0, runClips.Length);
+                int randomIndex = UnityEngine.Random.Range(0, runClips.Length);
                 runSource.PlayOneShot(runClips[randomIndex]);
             }
         }
@@ -230,7 +241,7 @@ public class PlayerController : MonoBehaviour
             flagActiveSound += 1;
 
             if(!isJumping && flagActiveSound % 6 == 0){
-                int randomIndex = Random.Range(0, runClips.Length);
+                int randomIndex = UnityEngine.Random.Range(0, runClips.Length);
                 runSource.PlayOneShot(runClips[randomIndex]);
             }
             
@@ -252,7 +263,7 @@ public class PlayerController : MonoBehaviour
             // Exerts a force on the player according to the jump force
             rb.AddForce(new Vector2(0, jump_power), ForceMode2D.Impulse);
 
-            int randomIndex = Random.Range(0, jumpClips.Length);
+            int randomIndex = UnityEngine.Random.Range(0, jumpClips.Length);
             jumpSource.PlayOneShot(jumpClips[randomIndex]);
         }
     }
@@ -315,11 +326,11 @@ public class PlayerController : MonoBehaviour
             // If the Z key is pressed, performs an attack
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                int randomIndex = Random.Range(0, swordClips.Length);
+                int randomIndex = UnityEngine.Random.Range(0, swordClips.Length);
                 swordSource.PlayOneShot(swordClips[randomIndex]);
 
                 // Draw one of the 3 attack animations to animate
-                int type_attack = Random.Range(1, 4);
+                int type_attack = UnityEngine.Random.Range(1, 4);
                 animator.SetTrigger("Attack" + type_attack);
 
                 // Enter attack cooldown
@@ -365,6 +376,7 @@ public class PlayerController : MonoBehaviour
         {
             // Play the hurt animation
             animator.SetTrigger("TakeDamage");
+            cooldownRecoveryLife += 60 * Time.deltaTime;
         }
         // If the hit was fatal, performs a hurt animation, followed by a death animation, and puts it in the die state. After that, call the showGameOvers() function.
         else if (playerLife <= damage && !isDead)
