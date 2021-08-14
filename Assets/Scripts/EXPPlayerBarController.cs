@@ -28,7 +28,7 @@ public class EXPPlayerBarController : MonoBehaviour
         // Fills the bar according to the player's current EXP in relation to his EXP to level up
         currfillValue = player.GetComponent<PlayerController>().exp / (float)(player.GetComponent<PlayerController>().expToLevelUp);
         expBarComplete.GetComponent<Image>().fillAmount = currfillValue;
-        // Show the value of Player current EXP
+        // Show the value of player current EXP
         EXPText.text = player.GetComponent<PlayerController>().exp + "/" + player.GetComponent<PlayerController>().expToLevelUp;
     }
 }

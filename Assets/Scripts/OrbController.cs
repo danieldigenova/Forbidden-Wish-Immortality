@@ -22,7 +22,7 @@ public class OrbController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.tag == "Player"){
             // Increases player experience
-            //player.GetComponent<PlayerController>().playerExperience += 20;
+            // The orb provides exp according to the enemy's level
             player.GetComponent<PlayerController>().exp += gameController.GetComponent<GameController>().level;
             // Destroy the orbs when collecting
             Destroy(gameObject);

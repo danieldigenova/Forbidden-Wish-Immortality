@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 /*
  * Game controller script
  **/
-
 public class GameController : MonoBehaviour
 {
     // Game controller instance
@@ -37,11 +36,11 @@ public class GameController : MonoBehaviour
     public Button previous_button;
     public Button next_button;
 
-    //Grounds
+    // Grounds
     public GameObject[] Grounds;
     private GameObject groundInstance;
 
-    //Backgrounds
+    // Backgrounds
     public GameObject[] BackgroundGroups;
     private GameObject backgroundGroupInstance;  
 
@@ -56,10 +55,13 @@ public class GameController : MonoBehaviour
         // If there is no saved game, then create a date with your information
         if (data != null)
         {
+            // Current level
             level = data.level;
+
+            // Max level reached
             max_level = data.max_level;
 
-
+            // Displays the previous and next level buttons according to the current level
             if (max_level > level)
             {
                 next_button.gameObject.SetActive(true);
@@ -68,7 +70,6 @@ public class GameController : MonoBehaviour
             {
                 next_button.gameObject.SetActive(false);
             }
-
             if (level > 1)
             {
                 previous_button.gameObject.SetActive(true);
@@ -80,10 +81,11 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            // Initial level
+            // Initial level when you don't have a saved file
             level = 1;
             max_level = 1;
 
+            // Does not display the previous and next buttons
             previous_button.gameObject.SetActive(false);
             next_button.gameObject.SetActive(false);
         }
@@ -91,11 +93,13 @@ public class GameController : MonoBehaviour
         // Modify the text of the level
         levelShow.text = "Fase " + level;
 
+        // Instantiate one of the 4 available enemy prefabs
         instantiateEnemy();
 
         // Leave the scale that time passes at one
         Time.timeScale = 1f;
 
+        // Instantiate an Background and ground
         instantiateBackgroundGroup();
         instantiateGround();
     }
@@ -119,17 +123,12 @@ public class GameController : MonoBehaviour
 
                 // Instantiate one of the 4 available enemy prefabs in the next level
                 int i = Random.Range(0, 4);
-                enemyInstance = Instantiate(Enemies[i]);
-
-                
+                enemyInstance = Instantiate(Enemies[i]);                
             }
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-
         }
     }
 
+    // Function to access the next level of a stage already reached by the button
     public void goNextLevel()
     {
         // Destroy current enemy
@@ -150,13 +149,13 @@ public class GameController : MonoBehaviour
 
     }
 
-    // Function to call the new level
+    // Function to call the next level
     void nextLevel()
     {
         // Increases the level
         level += 1;
 
-        // Increases the max level
+        // Increases the max level and disable or enable the previous and next buttons
         if (level >= max_level)
         {
             max_level = level;
@@ -169,9 +168,10 @@ public class GameController : MonoBehaviour
             next_button.gameObject.SetActive(true);
         }            
 
-        //Modify the text of the level
+        // Modify the text of the level
         levelShow.text = "Fase " + level;
 
+        // Instantiate an Background and ground
         instantiateBackgroundGroup();
         instantiateGround();
 
@@ -180,6 +180,7 @@ public class GameController : MonoBehaviour
         new WaitForSecondsRealtime(0.5f);
     }
 
+    // Function to access the previous level of a stage already reached by the button
     public void goPreviousLevel()
     {
         // Destroy current enemy
@@ -188,7 +189,7 @@ public class GameController : MonoBehaviour
         // Save current player
         SaveSystem.SavePlayer(player.GetComponent<PlayerController>());
 
-        // Go to the next level
+        // Go to the previous level
         previousLevel();
 
         // Save current game
@@ -199,11 +200,13 @@ public class GameController : MonoBehaviour
         enemyInstance = Instantiate(Enemies[i]);
     }
 
+    // Function to call the previous level
     void previousLevel()
     {
-        // Increases the level
+        // Decreases the level
         level -= 1;
 
+        // Disable or enable the previous and next buttons
         if (level == 1)
         {
             previous_button.gameObject.SetActive(false);
@@ -215,7 +218,7 @@ public class GameController : MonoBehaviour
             next_button.gameObject.SetActive(true);
         }
 
-        //Modify the text of the level
+        // Modify the text of the level
         levelShow.text = "Fase " + level;
 
         // Restart Position of Player
@@ -263,6 +266,8 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+
+    // Function that instantiate one of the 4 available enemy prefabs
     private void instantiateEnemy()
     {
         // Instantiate one of the 4 available enemy prefabs
@@ -270,10 +275,11 @@ public class GameController : MonoBehaviour
         enemyInstance = Instantiate(Enemies[i]);
     }
 
+    // Function that instantiate one of the 4 available ground
     private void instantiateGround()
     {
-        // Instantiate one of the 4 available enemy prefabs
-        if(groundInstance != null){
+        // Disables all ground and activates the draw
+        if (groundInstance != null){
             groundInstance.SetActive(false);
         }
         int i = Random.Range(0, 4);
@@ -281,10 +287,11 @@ public class GameController : MonoBehaviour
         groundInstance.SetActive(true);
     }
 
+    // Function that instantiate one of the 4 available backgrounds
     private void instantiateBackgroundGroup()
     {
-        // Instantiate one of the 4 available enemy prefabs
-        if(backgroundGroupInstance != null){
+        // Disables all backgrounds and activates the draw
+        if (backgroundGroupInstance != null){
             backgroundGroupInstance.SetActive(false);
         }
         int i = Random.Range(0, 4);

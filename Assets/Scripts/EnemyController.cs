@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour
             this.transform.localScale += this.transform.localScale;
             this.attack_range = this.attack_range * 2;
 
-            // Set the attributes of enemies according to their level.
+            // Set the attributes of Boss according to their level.
             this.enemyLife = (100 + 1f * enemyLevel);
             this.enemyAttack = 20 + enemyLevel;
             this.enemyDefense = 5 + 1f * enemyLevel;
@@ -130,13 +130,8 @@ public class EnemyController : MonoBehaviour
     // Function that deals damage to the enemy according to a value
     public void TakeDamage(float damage)
     {
-        // Reduces enemy's health with damage value
-        //enemyLife -= damage;
+        // Reduces enemy health with damage value disregarding defense value
         enemyLife = Mathf.Clamp(enemyLife + enemyDefense - damage, 0, enemyLife);
-
-        // Sets life at 0 if below that
-        //if (enemyLife < 0)
-         //   enemyLife = 0;
 
         // If the hit wasn't fatal, then it reduces the enemy's health and performs the hurt animation
         if (enemyLife > 0)
@@ -221,11 +216,13 @@ public class EnemyController : MonoBehaviour
             {
                 // Turn the angle to face the player
                 transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                levelText.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             }
             else
             {
                 // Turn the angle to face the player
                 transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
+                levelText.transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
             }
         }
 

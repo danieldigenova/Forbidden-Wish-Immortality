@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using System;
 /*
  * Script to control the player
@@ -14,10 +13,6 @@ public class PlayerController : MonoBehaviour
     public int statusPointsShield;
     public int statusPointsAttack;
     public int pointsToSpend;
-
-    // Experience Points (Persistent)
-    //public float playerTotalExperience;
-    //public int playerExperience;
 
     // Current level
     public int level;
@@ -62,7 +57,7 @@ public class PlayerController : MonoBehaviour
     // Enemies layer
     public LayerMask enemies;
 
-    //Sound
+    // Sound
     public AudioSource runSource;
     public AudioClip[] runClips;
 
@@ -97,6 +92,7 @@ public class PlayerController : MonoBehaviour
                 recoverLife((100 + (1f * statusPointsLife)) / 2 - playerLife);
             }
         }
+        // Initial status of a new game
         else
         {
             level = 1;
@@ -116,15 +112,13 @@ public class PlayerController : MonoBehaviour
         // Update Level Text to current level
         updateLevelText();
 
-        // Set initial experience
-        //playerExperience = 0;
-
         // Get Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
 
         // Get animator component
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
 
+        // Indicates that the sound is turned off
         flagActiveSound = 0;
     }
 
@@ -152,12 +146,12 @@ public class PlayerController : MonoBehaviour
         // Update player stats according to attribute points
         updateStatus();
 
+        // Restores some life over time
         cooldownRecoveryLife = Math.Max(0, cooldownRecoveryLife - Time.deltaTime);
 
         if(playerLife < playerMaxLife && cooldownRecoveryLife == 0){
-            playerLife += 0.02f;
+            playerLife += 0.008f;
         }
-
     }
 
     // Function for level up
@@ -186,11 +180,7 @@ public class PlayerController : MonoBehaviour
         playerMaxLife = 100 + (1f* statusPointsLife);
         playerAttack = 15 + (0.5f * statusPointsAttack);
         playerDefense = 10 + (0.5f * statusPointsShield);
-    }
-
-    public void recoverLife(float value) {
-        playerLife += value;
-    }
+    } 
 
     // Function to update the current status points of each attribute
     public void updateStatusPoints(int attack, int defense, int life, int pointsToSpend)
@@ -223,9 +213,11 @@ public class PlayerController : MonoBehaviour
             // Turn to the right side
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
+            // Indicates that the sound is turned on
             flagActiveSound += 1;
 
-            if(!isJumping && flagActiveSound % 6 == 0){
+            // Emits one of 6 running step sounds
+            if (!isJumping && flagActiveSound % 6 == 0){
                 int randomIndex = UnityEngine.Random.Range(0, runClips.Length);
                 runSource.PlayOneShot(runClips[randomIndex]);
             }
@@ -238,9 +230,11 @@ public class PlayerController : MonoBehaviour
             // Turn to the left side
             transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
 
+            // Indicates that the sound is turned off
             flagActiveSound += 1;
 
-            if(!isJumping && flagActiveSound % 6 == 0){
+            // Play one of running step sounds
+            if (!isJumping && flagActiveSound % 6 == 0){
                 int randomIndex = UnityEngine.Random.Range(0, runClips.Length);
                 runSource.PlayOneShot(runClips[randomIndex]);
             }
@@ -252,7 +246,6 @@ public class PlayerController : MonoBehaviour
             // Return to idle animation
             animator.SetBool("Walk", false);
         }
-        
     }
 
     // Function for the player to jump
@@ -263,6 +256,7 @@ public class PlayerController : MonoBehaviour
             // Exerts a force on the player according to the jump force
             rb.AddForce(new Vector2(0, jump_power), ForceMode2D.Impulse);
 
+            // Play the jump sound
             int randomIndex = UnityEngine.Random.Range(0, jumpClips.Length);
             jumpSource.PlayOneShot(jumpClips[randomIndex]);
         }
@@ -279,19 +273,17 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Jump", false);
         }
 
+        // Repels touching an enemy
         if(collision.gameObject.tag == "Enemy")
         {
             if(transform.eulerAngles == new Vector3(0.0f, 180.0f, 0.0f))
             {
-                // Repels touching an enemy
                 rb.AddForce(new Vector2(-1, 1), ForceMode2D.Impulse);
             } 
             else
             {
-                // Repels touching an enemy
                 rb.AddForce(new Vector2(1, 1), ForceMode2D.Impulse);
-            }
-            
+            }            
         }
     }
 
@@ -326,6 +318,7 @@ public class PlayerController : MonoBehaviour
             // If the Z key is pressed, performs an attack
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                // Play one of attack sword sounds
                 int randomIndex = UnityEngine.Random.Range(0, swordClips.Length);
                 swordSource.PlayOneShot(swordClips[randomIndex]);
 
@@ -360,16 +353,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(swordRange.position, attackRange);
     }
 
+    // Restores the player's health according to a value
+    public void recoverLife(float value)
+    {
+        playerLife += value;
+    }
+
     // Function that deals damage to the player according to a value
     public void TakeDamage(float damage)
     {
-        // Reduces player's health with damage value
-        //playerLife -= damage;
+        // Reduces player health with damage value disregarding defense value
         playerLife = Mathf.Clamp(playerLife + playerDefense - damage, 0, playerLife);
-
-        // Sets life at 0 if below that
-        //if (playerLife < 0)
-            //playerLife = 0;
 
         // If the hit wasn't fatal, then it reduces the player's health and performs the hurt animation
         if (playerLife > 0)
@@ -388,8 +382,7 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             StartCoroutine(showGameOver());            
         }
-
-    }
+    } 
 
     // Function to show Game Over UI
     private IEnumerator showGameOver()
