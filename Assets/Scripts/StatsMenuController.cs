@@ -18,18 +18,27 @@ public class StatsMenuController : MonoBehaviour
     
     // Plus Buttons
     public Button attackPlus;
+    public Button attackSpeedPlus;
+    public Button movSpeedPlus;
     public Button lifePlus;
     public Button defensePlus;
+    public Button luckPlus;
 
     // Stats Texts
     public Text attackText;
     public Text defenseText;
+    public Text attackSpeedText;
+    public Text movSpeedText;
     public Text lifeText;
+    public Text luckText;
     public Text PointsText;
 
     // Stats Points
     public int attackPoints;
     public int defensePoints;
+    public int attackSpeedPoints;
+    public int movSpeedPoints;
+    public int luckPoints;
     public int lifePoints;
     public int pointsToSpend;
 
@@ -72,17 +81,47 @@ public class StatsMenuController : MonoBehaviour
     {
         attackPoints = player.GetComponent<PlayerController>().statusPointsAttack;
         defensePoints = player.GetComponent<PlayerController>().statusPointsShield;
+        attackSpeedPoints = player.GetComponent<PlayerController>().statusPointsAttackSpeed;
+        movSpeedPoints = player.GetComponent<PlayerController>().statusPointsMovSpeed;
         lifePoints = player.GetComponent<PlayerController>().statusPointsLife;
+        luckPoints = player.GetComponent<PlayerController>().statusPointsLuck;
         pointsToSpend = player.GetComponent<PlayerController>().pointsToSpend;
     }
 
     // Function that updates UI texts with stats points
     void updateIU()
     {
-        attackText.text = "Atack Points: " + attackPoints;
+        attackText.text = "Attack Points: " + attackPoints;
         defenseText.text = "Defense Points: " + defensePoints;
         lifeText.text = "Life Points: " + lifePoints;
         PointsText.text = "Total Points: " + pointsToSpend;
+
+        if (luckPoints >= 200)
+        {
+            luckText.text = "Luck Points: MAX";
+        }
+        else
+        {
+            luckText.text = "Luck Points: " + luckPoints;
+        }
+
+        if (movSpeedPoints >= 200)
+        {
+            movSpeedText.text = "Mov Speed Points: MAX";
+        }
+        else
+        {
+            movSpeedText.text = "Mov Speed Points: " + movSpeedPoints;
+        }
+
+        if (attackSpeedPoints >= 200)
+        {
+            attackSpeedText.text = "Attack Speed Points: MAX";
+        }
+        else
+        {
+            attackSpeedText.text = "Attack Speed Points: " + attackSpeedPoints;
+        }
     }
 
     // Function to save player progress stats
@@ -120,11 +159,65 @@ public class StatsMenuController : MonoBehaviour
             // Update UI with new stats
             updateIU();
             // Update player stats according to status points
-            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, lifePoints, pointsToSpend);
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
             // Save player progress stats
             saveStats();
         }
     }
+
+    public void addAtackSpeed()
+    {
+        // Check if you have points to spend
+        if (pointsToSpend > 0 && attackSpeedPoints<200)
+        {
+            // Add point to attack
+            attackSpeedPoints += 1;
+            // Remove a point to spend
+            pointsToSpend -= 1;
+            // Update UI with new stats
+            updateIU();
+            // Update player stats according to status points
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
+            // Save player progress stats
+            saveStats();
+        }
+    }
+
+    public void addMovSpeed()
+    {
+        // Check if you have points to spend
+        if (pointsToSpend > 0 && movSpeedPoints<200)
+        {
+            // Add point to attack
+            movSpeedPoints += 1;
+            // Remove a point to spend
+            pointsToSpend -= 1;
+            // Update UI with new stats
+            updateIU();
+            // Update player stats according to status points
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
+            // Save player progress stats
+            saveStats();
+        }
+    }
+    public void addLuck()
+    {
+        // Check if you have points to spend
+        if (pointsToSpend > 0 && luckPoints < 200)
+        {
+            // Add point to attack
+            luckPoints += 1;
+            // Remove a point to spend
+            pointsToSpend -= 1;
+            // Update UI with new stats
+            updateIU();
+            // Update player stats according to status points
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
+            // Save player progress stats
+            saveStats();
+        }
+    }
+
 
     // Function that adds a point to spend for the defense attribute
     public void addDefense()
@@ -139,7 +232,7 @@ public class StatsMenuController : MonoBehaviour
             // Update UI with new stats
             updateIU();
             // Update player stats according to status points
-            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, lifePoints, pointsToSpend);
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
             // Save player progress stats
             saveStats();
         }
@@ -158,7 +251,7 @@ public class StatsMenuController : MonoBehaviour
             // Update UI with new stats
             updateIU();
             // Update player stats according to status points
-            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, lifePoints, pointsToSpend);
+            player.GetComponent<PlayerController>().updateStatusPoints(attackPoints, defensePoints, attackSpeedPoints, movSpeedPoints, lifePoints, pointsToSpend, luckPoints);
             player.GetComponent<PlayerController>().recoverLife(1);
             // Save player progress stats
             saveStats();

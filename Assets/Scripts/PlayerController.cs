@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     public int statusPointsLife;
     public int statusPointsShield;
     public int statusPointsAttack;
+    public int statusPointsAttackSpeed;
+    public int statusPointsMovSpeed;
     public int pointsToSpend;
+    public int statusPointsLuck;
 
     // Current level
     public int level;
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public float attack_speed;
     public float jump_power;
     public float attackRange;
+    public float criticalAttack;
 
     // State variables
     public bool isJumping = false;
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource jumpSource;
     public AudioClip[] jumpClips;
+    public AudioClip dieClip;
 
     public AudioSource swordSource;
     public AudioClip[] swordClips;
@@ -84,6 +89,9 @@ public class PlayerController : MonoBehaviour
             statusPointsLife = data.statusPointsLife;
             statusPointsAttack = data.statusPointsAttack;
             statusPointsShield = data.statusPointsShield;
+            statusPointsAttackSpeed = data.statusPointsAttackSpeed;
+            statusPointsMovSpeed = data.statusPointsMovSpeed;
+            statusPointsLuck = data.statusPointsLuck;
             pointsToSpend = data.pointsToSpend;
 
             // if the player has low life, he recovers half his life
@@ -103,6 +111,9 @@ public class PlayerController : MonoBehaviour
             statusPointsLife = 0;
             statusPointsAttack = 0;
             statusPointsShield = 0;
+            statusPointsMovSpeed = 0;
+            statusPointsAttackSpeed = 0;
+            statusPointsLuck = 0;
             pointsToSpend = 0;
         }
 
@@ -117,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
         // Get animator component
         animator = GetComponent<Animator>();
-
+        
         // Indicates that the sound is turned off
         flagActiveSound = 0;
     }
@@ -180,14 +191,19 @@ public class PlayerController : MonoBehaviour
         playerMaxLife = 100 + (1f* statusPointsLife);
         playerAttack = 15 + (0.5f * statusPointsAttack);
         playerDefense = 10 + (0.5f * statusPointsShield);
+        attack_speed = Mathf.Clamp(2f + (statusPointsAttackSpeed * 6.0f) / 200, 1.0f, 7.0f);
+        mov_speed = Mathf.Clamp(1.5f + (statusPointsMovSpeed * 4.5f) / 200, 1.0f, 6.0f);
     } 
 
     // Function to update the current status points of each attribute
-    public void updateStatusPoints(int attack, int defense, int life, int pointsToSpend)
+    public void updateStatusPoints(int attack, int defense, int attackSpeed, int movSpeed , int life, int pointsToSpend, int luck)
     {
         statusPointsLife = life;
         statusPointsAttack= attack;
         statusPointsShield = defense;
+        statusPointsAttackSpeed = attackSpeed;
+        statusPointsMovSpeed = movSpeed;
+        statusPointsLuck = luck;
         this.pointsToSpend = pointsToSpend;
     }
 
@@ -251,7 +267,7 @@ public class PlayerController : MonoBehaviour
     // Function for the player to jump
     private void Jump()
     {
-        if(Input.GetButtonDown("Jump") && !isJumping)
+        if(Input.GetButtonDown("Jump") && !isJumping && gameObject.transform.localPosition.y<=-1)
         {
             // Exerts a force on the player according to the jump force
             rb.AddForce(new Vector2(0, jump_power), ForceMode2D.Impulse);
@@ -266,7 +282,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the player is on the ground
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" )
         {
             // Return to idle animation
             isJumping = false;
@@ -315,9 +331,11 @@ public class PlayerController : MonoBehaviour
         // If he is not on attack timeout, he can make a new attack
         else
         {
+            
             // If the Z key is pressed, performs an attack
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKey(KeyCode.Z))
             {
+                animator.speed = 2;
                 // Play one of attack sword sounds
                 int randomIndex = UnityEngine.Random.Range(0, swordClips.Length);
                 swordSource.PlayOneShot(swordClips[randomIndex]);
@@ -333,12 +351,28 @@ public class PlayerController : MonoBehaviour
                 // Checks all affected enemies in player's circle of attack
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordRange.position, attackRange, enemies);
 
+                //critial attack multiplier calculation
+                if (UnityEngine.Random.Range(0, 100) >= Mathf.Round(2 + 58 * statusPointsLuck / 200))
+                {
+                    criticalAttack = UnityEngine.Random.Range(1.5f, 2.0f);
+                    foreach (Collider2D enemy in hitEnemies)
+                    {
+                        enemy.GetComponent<EnemyController>().TurnRed();
+                    }
+                }
+                else
+                {
+                    criticalAttack = 1;
+                }
+
                 // Damages all enemies affected by the attack
                 foreach (Collider2D enemy in hitEnemies)
                 {
-                    enemy.GetComponent<EnemyController>().TakeDamage(playerAttack);
+                    enemy.GetComponent<EnemyController>().TakeDamage(playerAttack*criticalAttack);
                 }
+                animator.speed = 1;
             }
+            
         }
     }
 
@@ -377,6 +411,7 @@ public class PlayerController : MonoBehaviour
         {
             // Play the hurt and death animations
             animator.SetBool("Dead", true);
+            runSource.PlayOneShot(dieClip);
             animator.SetTrigger("TakeDamage");
             // Set the current state to die
             isDead = true;

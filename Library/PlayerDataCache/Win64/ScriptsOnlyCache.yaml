@@ -398,7 +398,7 @@ ScriptsOnlyBuild:
     className: GameController
   - hash:
       serializedVersion: 2
-      Hash: b253f822c21218b00ea2ded6a0b5e7f4
+      Hash: 14c4f9efc6ee2727be391f81aa2ee071
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StatsMenuController
@@ -512,7 +512,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: af5e6d4df04b36e61803968ef8619fd6
+      Hash: 72a8c7778a92db6ff1e47579acaa4429
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -790,5 +790,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuInicial.unity
   - Assets/Scenes/Game.unity
-  playerPath: "D:/UFABC-Notebook/12\xBAQuad/Intro Prog Jogos/PROJETO/Forbidden-Wish-Immortality/Forbidden
-    Wish Immortality.exe"
+  playerPath: C:/Users/paulo/Desktop/Forbidden-Wish-Immortality/build/Forbidden Wish
+    Immortality.exe

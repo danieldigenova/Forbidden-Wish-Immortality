@@ -19,7 +19,10 @@ public class PlayerData
     public int statusPointsLife;
     public int statusPointsShield;
     public int statusPointsAttack;
+    public int statusPointsAttackSpeed;
+    public int statusPointsMovSpeed;
     public int pointsToSpend;
+    public int statusPointsLuck;
 
     // Get data from PlayerController
     public PlayerData(PlayerController player)
@@ -31,7 +34,10 @@ public class PlayerData
         statusPointsLife = player.statusPointsLife;
         statusPointsShield = player.statusPointsShield;
         statusPointsAttack = player.statusPointsAttack;
+        statusPointsAttackSpeed =player.statusPointsAttackSpeed;
+        statusPointsMovSpeed = player.statusPointsMovSpeed;
         pointsToSpend = player.pointsToSpend;
+        statusPointsLuck = player.statusPointsLuck;
     }
 
 }

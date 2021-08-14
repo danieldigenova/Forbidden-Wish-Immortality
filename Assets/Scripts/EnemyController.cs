@@ -35,6 +35,9 @@ public class EnemyController : MonoBehaviour
     // Enemy animator
     public Animator animator;
 
+    //state parameters
+    private bool isRed;
+
     // Player GameObjects
     public GameObject player;
 
@@ -56,15 +59,19 @@ public class EnemyController : MonoBehaviour
     public Gradient healthBarCollor;
     public Image healthBarFill;
 
+    private float time;
+
     // Start is called before the first frame update
     void Start()
     {
         // Get and show the enemy's level
         enemyLevel = GameController.instance.level;
         levelText.text = "lvl. " + enemyLevel;
+        isRed = false;
+        
 
         // Boss
-        if(enemyLevel % 5 == 0)
+        if (enemyLevel % 5 == 0)
         {
             this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);    
             this.transform.localScale += this.transform.localScale;
@@ -114,6 +121,16 @@ public class EnemyController : MonoBehaviour
                 Attack();
                 break;
         }
+
+        if (isRed)
+        {
+            time += Time.deltaTime;
+            if (time >= 0.1f)
+            {
+                TurnNormal();
+                time = 0;
+            }
+        }
     }
 
     // Function to see if there is a player in the enemy's view range
@@ -155,6 +172,20 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(showOrbs());
         }
 
+    }
+
+    public void TurnRed()
+    {
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        renderer.color = new UnityEngine.Color(0.90f,0.46f,0.46f);
+        isRed = true;
+    }
+
+    public void TurnNormal()
+    {
+        SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+        renderer.color = Color.white;
+        isRed = false;
     }
 
     // Function that generates experience orbs and destroys the enemy's gameObject
