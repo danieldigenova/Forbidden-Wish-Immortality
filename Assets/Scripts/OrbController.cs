@@ -23,7 +23,7 @@ public class OrbController : MonoBehaviour
         if(collider.gameObject.tag == "Player"){
             // Increases player experience
             // The orb provides exp according to the enemy's level
-            player.GetComponent<PlayerController>().exp += 2 * (int)Mathf.Pow(gameController.GetComponent<GameController>().level, 2);
+            player.GetComponent<PlayerController>().exp += 10*(int)gameController.GetComponent<GameController>().level;
             // Destroy the orbs when collecting
             Destroy(gameObject);
         }

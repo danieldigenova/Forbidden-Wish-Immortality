@@ -78,18 +78,18 @@ public class EnemyController : MonoBehaviour
             this.attack_range = this.attack_range * 2;
 
             // Set the attributes of Boss according to their level.
-            this.enemyLife = (100 + 1f * enemyLevel);
-            this.enemyAttack = 20 + enemyLevel;
-            this.enemyDefense = 5 + 1f * enemyLevel;
+            this.enemyLife = (100 + 4f * enemyLevel);
+            this.enemyAttack = 20 + 2*enemyLevel;
+            this.enemyDefense = 5 + 2f * enemyLevel;
             setMaxHealth(enemyLife);
         }
         // Normal
         else
         {
             // Set the attributes of enemies according to their level.
-            this.enemyLife = (100 + 0.5f * enemyLevel);
-            this.enemyAttack = 15 + enemyLevel;
-            this.enemyDefense = 5 + 0.5f * enemyLevel;
+            this.enemyLife = (100 + 2 * enemyLevel);
+            this.enemyAttack = 15 + 1.5f*enemyLevel;
+            this.enemyDefense = 5 +  enemyLevel;
             setMaxHealth(enemyLife);
         }
 
