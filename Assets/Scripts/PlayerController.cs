@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
         playerMaxLife = 100 + (1f* statusPointsLife);
         playerAttack = 15 + (0.5f * statusPointsAttack);
         playerDefense = 10 + (0.5f * statusPointsShield);
-        attack_speed = Mathf.Clamp(2f + (statusPointsAttackSpeed * 6.0f) / 200, 1.0f, 7.0f);
+        attack_speed = Mathf.Clamp(2f + (statusPointsAttackSpeed * 4.0f) / 200, 1.0f, 6.0f);
         mov_speed = Mathf.Clamp(1.5f + (statusPointsMovSpeed * 4.5f) / 200, 1.0f, 6.0f);
     } 
 
