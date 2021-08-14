@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
         // Restores some life over time
         cooldownRecoveryLife = Math.Max(0, cooldownRecoveryLife - Time.deltaTime);
 
-        if(playerLife < playerMaxLife && cooldownRecoveryLife == 0){
+        if(playerLife < playerMaxLife && cooldownRecoveryLife == 0 && Time.timeScale != 0){
             playerLife += 0.008f;
         }
     }
