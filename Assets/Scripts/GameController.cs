@@ -195,6 +195,10 @@ public class GameController : MonoBehaviour
         // Save current game
         SaveSystem.SaveGame(this);
 
+        // Instantiate an Background and ground
+        instantiateBackgroundGroup();
+        instantiateGround();
+
         // Instantiate one of the 4 available enemy prefabs in the next level
         int i = Random.Range(0, 4);
         enemyInstance = Instantiate(Enemies[i]);
